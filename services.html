@@ -76,6 +76,7 @@
             font-size: 6rem;
             color: white;
             z-index: 2;
+            position: relative;
         }
         
         .service-image::before {
@@ -113,13 +114,10 @@
                 <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
                 <li><a href="login.html" class="nav-link">Login</a></li>
                 <li>
-                    <div class="lang-toggle">
-                        <span class="lang-label">English</span>
-                        <div class="lang-toggle-switch">
-                            <div class="lang-toggle-slider"></div>
-                        </div>
-                        <i class="ph ph-globe"></i>
-                    </div>
+                    <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
+                        <i class="ph ph-globe" style="font-size: 1.5rem;"></i>
+                        <span class="lang-label">EN</span>
+                    </button>
                 </li>
             </ul>
             
@@ -164,8 +162,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, #6DD5FA, #2980B9);">
-                            <i class="ph ph-snowflake"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="ph ph-snowflake" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Transform Your Recovery</h4>
@@ -214,8 +212,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-lavender), #D4A5F3);">
-                            <i class="ph ph-brain"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="ph ph-brain" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Powered by Artificial Intelligence</h4>
@@ -264,8 +262,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-coral), #FF8A73);">
-                            <i class="ph ph-sparkle"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                            <i class="ph ph-sparkle" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Complete Relaxation</h4>
@@ -314,8 +312,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-mint), var(--color-sage));">
-                            <i class="ph ph-barbell"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                            <i class="ph ph-barbell" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Achieve Your Fitness Goals</h4>
@@ -364,8 +362,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-lavender), var(--color-coral));">
-                            <i class="ph ph-heartbeat"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                            <i class="ph ph-heartbeat" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Fuel Your Body Right</h4>
@@ -414,8 +412,8 @@
                 </div>
                 <div class="service-body">
                     <div class="service-content">
-                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-sage), var(--color-coral));">
-                            <i class="ph ph-atom"></i>
+                        <div class="service-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                            <i class="ph ph-atom" style="font-size: 4rem; color: white;"></i>
                         </div>
                         <div>
                             <h4>Peak Performance & Longevity</h4>

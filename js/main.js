@@ -1,52 +1,13 @@
-// Vitality.AI - Main JavaScript
-
-// State Management
-const state = {
-  currentLang: 'en',
-  isRTL: false
-};
-
-// Translations
-const translations = {
-  en: {
-    home: 'Home',
-    services: 'Services',
-    about: 'About',
-    contact: 'Contact',
-    pricing: 'Pricing',
-    bookAppointment: 'Book Appointment',
-    login: 'Login',
-    dashboard: 'Dashboard',
-    heroTitle: 'Rejuvenate Your Life',
-    heroSubtitle: 'Experience the future of health and wellness',
-    bookNow: 'Book Now',
-    learnMore: 'Learn More'
-  },
-  ar: {
-    home: 'الرئيسية',
-    services: 'الخدمات',
-    about: 'عن',
-    contact: 'اتصل',
-    pricing: 'التسعير',
-    bookAppointment: 'احجز موعد',
-    login: 'تسجيل الدخول',
-    dashboard: 'لوحة التحكم',
-    heroTitle: 'جدد حياتك',
-    heroSubtitle: 'اختبر مستقبل الصحة والعافية',
-    bookNow: 'احجز الآن',
-    learnMore: 'اعرف المزيد'
-  }
-};
+// Vitality.AI - Main JavaScript (English Only)
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
-  initLanguageToggle();
   initMobileMenu();
   initScrollAnimations();
   initFormValidation();
-  loadStoredLanguage();
   initDropdowns();
+  initScrollTop();
 });
 
 // Toggle Dropdown Menu
@@ -87,89 +48,6 @@ function initNavbar() {
   });
 }
 
-// Initialize Language Toggle
-function initLanguageToggle() {
-  const langToggle = document.querySelector('.lang-toggle-switch');
-  const langLabel = document.querySelector('.lang-label');
-  
-  if (!langToggle) return;
-  
-  langToggle.addEventListener('click', () => {
-    toggleLanguage();
-  });
-}
-
-// Toggle Language Function
-function toggleLanguage() {
-  const html = document.documentElement;
-  const langToggle = document.querySelector('.lang-toggle-switch');
-  const langLabel = document.querySelector('.lang-label');
-  
-  state.isRTL = !state.isRTL;
-  state.currentLang = state.isRTL ? 'ar' : 'en';
-  
-  // Update HTML direction
-  html.setAttribute('dir', state.isRTL ? 'rtl' : 'ltr');
-  html.setAttribute('lang', state.currentLang);
-  
-  // Update toggle UI
-  if (langToggle) {
-    langToggle.classList.toggle('active');
-  }
-  
-  if (langLabel) {
-    langLabel.textContent = state.isRTL ? 'العربية' : 'English';
-  }
-  
-  // Update all translatable elements
-  updateTranslations();
-  
-  // Store preference
-  localStorage.setItem('preferred-language', state.currentLang);
-  localStorage.setItem('is-rtl', state.isRTL);
-}
-
-// Update Translations
-function updateTranslations() {
-  const elements = document.querySelectorAll('[data-translate]');
-  const currentTranslations = translations[state.currentLang];
-  
-  elements.forEach(element => {
-    const key = element.getAttribute('data-translate');
-    if (currentTranslations[key]) {
-      element.textContent = currentTranslations[key];
-    }
-  });
-}
-
-// Load Stored Language Preference
-function loadStoredLanguage() {
-  const storedLang = localStorage.getItem('preferred-language');
-  const storedRTL = localStorage.getItem('is-rtl') === 'true';
-  
-  if (storedLang && storedLang !== state.currentLang) {
-    state.currentLang = storedLang;
-    state.isRTL = storedRTL;
-    
-    const html = document.documentElement;
-    html.setAttribute('dir', state.isRTL ? 'rtl' : 'ltr');
-    html.setAttribute('lang', state.currentLang);
-    
-    const langToggle = document.querySelector('.lang-toggle-switch');
-    const langLabel = document.querySelector('.lang-label');
-    
-    if (langToggle && state.isRTL) {
-      langToggle.classList.add('active');
-    }
-    
-    if (langLabel) {
-      langLabel.textContent = state.isRTL ? 'العربية' : 'English';
-    }
-    
-    updateTranslations();
-  }
-}
-
 // Initialize Mobile Menu
 function initMobileMenu() {
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -178,16 +56,15 @@ function initMobileMenu() {
   if (!mobileToggle || !navMenu) return;
   
   mobileToggle.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    mobileToggle.classList.toggle('active');
   });
   
-  // Close menu when clicking nav links
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
+  // Close menu when clicking a link
+  navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileToggle.classList.remove('active');
       navMenu.classList.remove('active');
+      mobileToggle.classList.remove('active');
     });
   });
   
@@ -282,7 +159,7 @@ function showError(input, message) {
   removeError(input);
   const errorDiv = document.createElement('div');
   errorDiv.className = 'error-message';
-  errorDiv.style.color = 'var(--color-coral)';
+  errorDiv.style.color = 'var(--color-accent)';
   errorDiv.style.fontSize = '0.875rem';
   errorDiv.style.marginTop = '0.25rem';
   errorDiv.textContent = message;
@@ -297,51 +174,77 @@ function removeError(input) {
 }
 
 function handleFormSubmit(form) {
-  // Show loading state
   const submitBtn = form.querySelector('button[type="submit"]');
   const originalText = submitBtn.textContent;
   submitBtn.disabled = true;
-  submitBtn.innerHTML = '<span class="loader" style="width: 20px; height: 20px; border-width: 3px;"></span>';
+  submitBtn.innerHTML = '<span class="loader"></span>';
   
   // Simulate API call
   setTimeout(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = originalText;
-    
-    // Show success message
     showNotification('Success! Your form has been submitted.', 'success');
     form.reset();
   }, 2000);
 }
 
+// Initialize Scroll to Top Button
+function initScrollTop() {
+  const scrollTopBtn = document.querySelector('.scroll-top');
+  if (!scrollTopBtn) return;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+  
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 // Notification System
-function showNotification(message, type = 'info') {
+function showNotification(message, type = 'success') {
+  const existing = document.querySelector('.notification-toast');
+  if (existing) existing.remove();
+  
   const notification = document.createElement('div');
-  notification.className = 'notification glass-card';
+  notification.className = `notification-toast ${type}`;
   notification.style.position = 'fixed';
   notification.style.top = '100px';
-  notification.style.right = state.isRTL ? 'auto' : '20px';
-  notification.style.left = state.isRTL ? '20px' : 'auto';
+  notification.style.right = '20px';
   notification.style.zIndex = '10000';
   notification.style.padding = '1rem 1.5rem';
   notification.style.minWidth = '300px';
+  notification.style.background = 'white';
+  notification.style.borderRadius = '12px';
+  notification.style.boxShadow = '0 10px 40px rgba(0,0,0,0.15)';
+  notification.style.display = 'flex';
+  notification.style.alignItems = 'center';
+  notification.style.gap = '12px';
   notification.style.animation = 'fadeInUp 0.3s ease';
   
   const colors = {
-    success: 'var(--color-sage)',
-    error: 'var(--color-coral)',
-    info: 'var(--color-lavender)'
+    success: 'var(--color-success)',
+    error: 'var(--color-accent)',
+    info: 'var(--color-primary)'
   };
   
   notification.style.borderLeft = `4px solid ${colors[type] || colors.info}`;
-  notification.textContent = message;
+  notification.innerHTML = `
+    <i class="ph ${type === 'success' ? 'ph-check-circle' : 'ph-warning-circle'}" style="font-size: 1.5rem; color: ${colors[type]}"></i>
+    <span>${message}</span>
+  `;
   
   document.body.appendChild(notification);
   
   setTimeout(() => {
     notification.style.animation = 'fadeOut 0.3s ease';
     setTimeout(() => notification.remove(), 300);
-  }, 3000);
+  }, 4000);
 }
 
 // Smooth Scroll for Anchor Links
@@ -387,9 +290,8 @@ function throttle(func, limit) {
 
 // Export for use in other modules
 window.VitalityAI = {
-  state,
-  toggleLanguage,
   showNotification,
+  toggleDropdown: toggleDropdown,
   debounce,
   throttle
 };
