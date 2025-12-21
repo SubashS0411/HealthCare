@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Health Dashboard - Vitality.AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .dashboard-sidebar {
+            position: fixed;
+            left: 0;
+            top: 70px;
+            width: 250px;
+            height: calc(100vh - 70px);
+            background: white;
+            border-right: 1px solid var(--color-gray-200);
+            padding: 2rem 0;
+            overflow-y: auto;
+        }
+        .dashboard-main {
+            margin-left: 250px;
+            padding: 2rem;
+            min-height: calc(100vh - 70px);
+            margin-top: 70px;
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            color: var(--color-gray-700);
+            transition: all 0.3s ease;
+        }
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: linear-gradient(90deg, rgba(139, 191, 159, 0.1) 0%, transparent 100%);
+            color: var(--color-sage);
+            border-left: 4px solid var(--color-sage);
+        }
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-gray-300);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.5rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-sage);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--color-sage);
+        }
+        .chart-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--color-porcelain) 0%, white 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--color-gray-300);
+        }
+        @media (max-width: 768px) {
+            .dashboard-sidebar {
+                transform: translateX(-100%);
+                z-index: 100;
+            }
+            .dashboard-sidebar.active {
+                transform: translateX(0);
+            }
+            .dashboard-main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="ph ph-leaf"></i> Vitality.AI</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="user-dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">New Appointment</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch"><div class="lang-toggle-slider"></div></div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+                <li>
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-sage), var(--color-mint)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; cursor: pointer;">
+                        JD
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-sidebar">
+        <a href="#overview" class="sidebar-link active">
+            <i class="ph ph-house" style="font-size: 1.5rem;"></i>
+            <span>Overview</span>
+        </a>
+        <a href="#appointments" class="sidebar-link">
+            <i class="ph ph-calendar" style="font-size: 1.5rem;"></i>
+            <span>Appointments</span>
+        </a>
+        <a href="#health-journey" class="sidebar-link">
+            <i class="ph ph-chart-line" style="font-size: 1.5rem;"></i>
+            <span>Health Journey</span>
+        </a>
+        <a href="#test-results" class="sidebar-link">
+            <i class="ph ph-clipboard-text" style="font-size: 1.5rem;"></i>
+            <span>Test Results</span>
+        </a>
+        <a href="#prescriptions" class="sidebar-link">
+            <i class="ph ph-prescription" style="font-size: 1.5rem;"></i>
+            <span>Prescriptions</span>
+        </a>
+        <a href="#billing" class="sidebar-link">
+            <i class="ph ph-credit-card" style="font-size: 1.5rem;"></i>
+            <span>Billing</span>
+        </a>
+        <a href="#settings" class="sidebar-link">
+            <i class="ph ph-gear" style="font-size: 1.5rem;"></i>
+            <span>Settings</span>
+        </a>
+        <a href="login.html" class="sidebar-link">
+            <i class="ph ph-sign-out" style="font-size: 1.5rem;"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="flex justify-between items-center mb-4" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1>Welcome Back, John!</h1>
+                <p style="color: var(--color-gray-600);">Here's your health overview for today</p>
+            </div>
+            <div class="flex gap-2">
+                <a href="book-appointment.html" class="btn btn-primary">
+                    <i class="ph ph-calendar-plus"></i> Book Appointment
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-4 mb-4">
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-2">
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-sage), var(--color-mint)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-heartbeat" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <span style="background: rgba(139, 191, 159, 0.1); color: var(--color-sage); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">+5%</span>
+                </div>
+                <h3 style="font-size: 2rem; margin: 0.5rem 0;">72 bpm</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Heart Rate</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-2">
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-coral), #FF8A73); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-flame" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <span style="background: rgba(255, 159, 136, 0.1); color: var(--color-coral); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">+12%</span>
+                </div>
+                <h3 style="font-size: 2rem; margin: 0.5rem 0;">2,547</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Calories Today</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-2">
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-lavender), #D4A5F3); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-moon" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <span style="background: rgba(224, 195, 252, 0.1); color: var(--color-lavender); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">Great</span>
+                </div>
+                <h3 style="font-size: 2rem; margin: 0.5rem 0;">7.5 hrs</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Sleep Duration</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-2">
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-mint), var(--color-sage)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-footprints" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <span style="background: rgba(184, 230, 213, 0.3); color: var(--color-mint); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;">85%</span>
+                </div>
+                <h3 style="font-size: 2rem; margin: 0.5rem 0;">8,547</h3>
+                <p style="color: var(--color-gray-600); margin: 0;">Steps Today</p>
+            </div>
+        </div>
+
+        <!-- Upcoming Appointments -->
+        <div class="grid grid-2 mb-4">
+            <div class="glass-card" style="padding: 2rem;">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 style="margin: 0;">Upcoming Appointments</h3>
+                    <a href="book-appointment.html" style="color: var(--color-sage); font-weight: 600; font-size: 0.9rem;">View All</a>
+                </div>
+
+                <div class="clay-card mb-2" style="padding: 1.5rem; border-left: 4px solid var(--color-sage);">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0;">Cryotherapy Session</h4>
+                            <p style="margin: 0; color: var(--color-gray-600); font-size: 0.9rem;">Dr. Sarah Mitchell</p>
+                        </div>
+                        <span class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Tomorrow</span>
+                    </div>
+                    <div class="flex gap-3" style="font-size: 0.9rem; color: var(--color-gray-600);">
+                        <span><i class="ph ph-calendar"></i> Jan 21, 2025</span>
+                        <span><i class="ph ph-clock"></i> 10:00 AM</span>
+                    </div>
+                </div>
+
+                <div class="clay-card" style="padding: 1.5rem; border-left: 4px solid var(--color-lavender);">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0;">AI Health Screening</h4>
+                            <p style="margin: 0; color: var(--color-gray-600); font-size: 0.9rem;">Dr. James Chen</p>
+                        </div>
+                        <span class="btn btn-glass" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jan 25</span>
+                    </div>
+                    <div class="flex gap-3" style="font-size: 0.9rem; color: var(--color-gray-600);">
+                        <span><i class="ph ph-calendar"></i> Jan 25, 2025</span>
+                        <span><i class="ph ph-clock"></i> 2:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 2rem;">
+                <h3 style="margin: 0 0 1.5rem 0;">Health Vitals Chart</h3>
+                <div class="chart-placeholder">
+                    <div style="text-align: center; color: var(--color-gray-600);">
+                        <i class="ph ph-chart-line-up" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Weight, BMI & Body Fat Tracking</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Your health metrics over the last 6 months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Journey Timeline -->
+        <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
+            <h3 style="margin: 0 0 2rem 0;">My Health Journey</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="clay-card" style="padding: 1.5rem;">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 style="margin: 0;">AI Diagnostics Completed</h4>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-600);">Jan 15, 2025</span>
+                        </div>
+                        <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Comprehensive health screening completed. All metrics within healthy ranges.</p>
+                        <a href="#" class="btn btn-glass" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                            <i class="ph ph-file-text"></i> View Report
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--color-coral);"></div>
+                    <div class="clay-card" style="padding: 1.5rem;">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 style="margin: 0;">Personal Training Milestone</h4>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-600);">Jan 10, 2025</span>
+                        </div>
+                        <p style="color: var(--color-gray-600); margin-bottom: 0;">Achieved 10% strength increase in all major lifts. Great progress!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--color-lavender);"></div>
+                    <div class="clay-card" style="padding: 1.5rem;">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 style="margin: 0;">Nutrition Plan Updated</h4>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-600);">Jan 5, 2025</span>
+                        </div>
+                        <p style="color: var(--color-gray-600); margin-bottom: 0;">New meal plan created based on updated fitness goals and preferences.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--color-mint);"></div>
+                    <div class="clay-card" style="padding: 1.5rem;">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 style="margin: 0;">Initial Consultation</h4>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-600);">Dec 20, 2024</span>
+                        </div>
+                        <p style="color: var(--color-gray-600); margin-bottom: 0;">First visit with Dr. Mitchell. Comprehensive wellness plan established.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="glass-card" style="padding: 2rem;">
+            <h3 style="margin: 0 0 1.5rem 0;">Quick Actions</h3>
+            <div class="grid grid-4" style="gap: 1rem;">
+                <a href="book-appointment.html" class="btn btn-primary w-full">
+                    <i class="ph ph-calendar-plus"></i> Book Visit
+                </a>
+                <a href="#" class="btn btn-secondary w-full">
+                    <i class="ph ph-chat-circle"></i> Message Doctor
+                </a>
+                <a href="#" class="btn btn-accent w-full">
+                    <i class="ph ph-prescription"></i> Request Refill
+                </a>
+                <a href="#" class="btn btn-glass w-full">
+                    <i class="ph ph-download"></i> Download Records
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

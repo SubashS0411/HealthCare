@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Vitality.AI - Meet our team of world-class medical professionals">
+    <title>About Us - Vitality.AI</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .carousel-container {
+            perspective: 1500px;
+            height: 500px;
+            position: relative;
+            margin: 4rem 0;
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .doctor-card {
+            position: absolute;
+            width: 350px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .doctor-card-inner {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .doctor-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-mint));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--color-sage);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 550px;
+            }
+            .doctor-card {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="ph ph-leaf"></i> Vitality.AI
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch">
+                            <div class="lang-toggle-slider"></div>
+                        </div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-coral) 100%);">
+        <div class="organic-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <h1 class="hero-title" style="color: white;">About Vitality.AI</h1>
+            <p class="hero-subtitle" style="color: white;">Where cutting-edge technology meets compassionate care</p>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section>
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center; gap: 4rem;">
+                <div class="animate-on-scroll">
+                    <h2>Our Mission</h2>
+                    <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.8;">
+                        At Vitality.AI, we're pioneering the future of healthcare by seamlessly integrating artificial intelligence, 
+                        cutting-edge medical technology, and personalized wellness programs. Our mission is to empower individuals 
+                        to take control of their health journey through data-driven insights and world-class care.
+                    </p>
+                    <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.8;">
+                        We believe that optimal health is not just about treating illness—it's about prevention, optimization, 
+                        and achieving peak performance in every aspect of life.
+                    </p>
+                </div>
+                <div class="clay-card animate-on-scroll" style="padding: 3rem; text-align: center;">
+                    <i class="ph ph-target" style="font-size: 5rem; color: var(--color-sage); margin-bottom: 1.5rem;"></i>
+                    <h3 style="color: var(--color-sage);">Our Vision</h3>
+                    <p style="color: var(--color-gray-600);">To become the global leader in AI-powered wellness, making premium healthcare accessible and transforming millions of lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section style="background: var(--color-porcelain);">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Core Values</h2>
+            
+            <div class="grid grid-4">
+                <div class="glass-card text-center animate-on-scroll">
+                    <i class="ph ph-heart" style="font-size: 3rem; color: var(--color-coral); margin-bottom: 1rem;"></i>
+                    <h4>Compassion</h4>
+                    <p style="color: var(--color-gray-600);">Every patient is treated with empathy, respect, and personalized attention.</p>
+                </div>
+                
+                <div class="glass-card text-center animate-on-scroll">
+                    <i class="ph ph-lightbulb" style="font-size: 3rem; color: var(--color-sage); margin-bottom: 1rem;"></i>
+                    <h4>Innovation</h4>
+                    <p style="color: var(--color-gray-600);">We embrace cutting-edge technology to deliver superior healthcare outcomes.</p>
+                </div>
+                
+                <div class="glass-card text-center animate-on-scroll">
+                    <i class="ph ph-shield-check" style="font-size: 3rem; color: var(--color-lavender); margin-bottom: 1rem;"></i>
+                    <h4>Excellence</h4>
+                    <p style="color: var(--color-gray-600);">We maintain the highest standards in medical care and service delivery.</p>
+                </div>
+                
+                <div class="glass-card text-center animate-on-scroll">
+                    <i class="ph ph-users-three" style="font-size: 3rem; color: var(--color-mint); margin-bottom: 1rem;"></i>
+                    <h4>Community</h4>
+                    <p style="color: var(--color-gray-600);">We build lasting relationships and support our patients' wellness journeys.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Carousel -->
+    <section>
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Meet Our Expert Team</h2>
+            <p class="section-subtitle animate-on-scroll">World-class medical professionals dedicated to your wellness</p>
+            
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="doctorCarousel">
+                    <!-- Doctor 1 -->
+                    <div class="doctor-card" data-index="0">
+                        <div class="doctor-card-inner">
+                            <div class="doctor-avatar">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <h3>Dr. Sarah Mitchell</h3>
+                            <p style="color: var(--color-sage); font-weight: 600; margin-bottom: 1rem;">Chief Medical Officer</p>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Board-certified in Internal Medicine with 15 years of experience in preventive care and AI-powered diagnostics.</p>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">MD</span>
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">PhD</span>
+                            </div>
+                            <a href="book-appointment.html" class="btn btn-primary w-full">Book Appointment</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor 2 -->
+                    <div class="doctor-card" data-index="1">
+                        <div class="doctor-card-inner">
+                            <div class="doctor-avatar" style="background: linear-gradient(135deg, var(--color-lavender), #D4A5F3);">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <h3>Dr. James Chen</h3>
+                            <p style="color: var(--color-lavender); font-weight: 600; margin-bottom: 1rem;">Sports Medicine Specialist</p>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Olympic team physician specializing in performance optimization and injury prevention.</p>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">MD</span>
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">CSCS</span>
+                            </div>
+                            <a href="book-appointment.html" class="btn btn-secondary w-full">Book Appointment</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor 3 -->
+                    <div class="doctor-card" data-index="2">
+                        <div class="doctor-card-inner">
+                            <div class="doctor-avatar" style="background: linear-gradient(135deg, var(--color-coral), #FF8A73);">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <h3>Dr. Emily Rodriguez</h3>
+                            <p style="color: var(--color-coral); font-weight: 600; margin-bottom: 1rem;">Wellness & Nutrition Expert</p>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Certified nutritionist and wellness coach helping clients achieve sustainable lifestyle transformations.</p>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">RD</span>
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">CNS</span>
+                            </div>
+                            <a href="book-appointment.html" class="btn btn-accent w-full">Book Appointment</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor 4 -->
+                    <div class="doctor-card" data-index="3">
+                        <div class="doctor-card-inner">
+                            <div class="doctor-avatar" style="background: linear-gradient(135deg, var(--color-mint), var(--color-sage));">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <h3>Dr. Michael Thompson</h3>
+                            <p style="color: var(--color-mint); font-weight: 600; margin-bottom: 1rem;">Cardiology & Longevity</p>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Leading expert in cardiovascular health and age-reversal protocols.</p>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">MD</span>
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">FACC</span>
+                            </div>
+                            <a href="book-appointment.html" class="btn btn-primary w-full">Book Appointment</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor 5 -->
+                    <div class="doctor-card" data-index="4">
+                        <div class="doctor-card-inner">
+                            <div class="doctor-avatar" style="background: linear-gradient(135deg, #FF8A73, var(--color-lavender));">
+                                <i class="ph ph-user-circle"></i>
+                            </div>
+                            <h3>Dr. Lisa Anderson</h3>
+                            <p style="color: var(--color-sage); font-weight: 600; margin-bottom: 1rem;">Integrative Medicine</p>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1rem;">Holistic approach combining traditional medicine with alternative therapies for complete wellness.</p>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">MD</span>
+                                <span style="background: var(--color-porcelain); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem;">ABOIM</span>
+                            </div>
+                            <a href="book-appointment.html" class="btn btn-accent w-full">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="rotateCarousel(-1)">
+                    <i class="ph ph-caret-left" style="font-size: 1.5rem;"></i>
+                </button>
+                <button class="carousel-btn" onclick="rotateCarousel(1)">
+                    <i class="ph ph-caret-right" style="font-size: 1.5rem;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section style="background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-mint) 100%); color: white;">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="text-center animate-on-scroll">
+                    <h3 style="color: white; font-size: 3.5rem; margin-bottom: 0.5rem;">50+</h3>
+                    <p style="color: white; opacity: 0.9;">Medical Experts</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <h3 style="color: white; font-size: 3.5rem; margin-bottom: 0.5rem;">15</h3>
+                    <p style="color: white; opacity: 0.9;">Years Experience</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <h3 style="color: white; font-size: 3.5rem; margin-bottom: 0.5rem;">5000+</h3>
+                    <p style="color: white; opacity: 0.9;">Happy Patients</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <h3 style="color: white; font-size: 3.5rem; margin-bottom: 0.5rem;">25+</h3>
+                    <p style="color: white; opacity: 0.9;">Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align: center;">
+        <div class="container">
+            <h2 class="animate-on-scroll">Ready to Transform Your Health?</h2>
+            <p style="font-size: 1.25rem; color: var(--color-gray-600); margin-bottom: 2rem;" class="animate-on-scroll">Join thousands of satisfied patients on their wellness journey</p>
+            <a href="book-appointment.html" class="btn btn-accent" style="padding: 1.25rem 2.5rem; font-size: 1.1rem;">Book Your First Visit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="ph ph-leaf"></i> Vitality.AI</h4>
+                    <p style="color: var(--color-gray-400);">Experience the future of health and wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Team</h4>
+                    <ul class="footer-links">
+                        <li><a href="#team">Medical Experts</a></li>
+                        <li><a href="#team">Trainers</a></li>
+                        <li><a href="#team">Nutritionists</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="ph ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph ph-envelope"></i> hello@vitalityai.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        let currentRotation = 0;
+        const totalDoctors = 5;
+        const angleStep = 360 / totalDoctors;
+        
+        function initCarousel() {
+            updateCarousel();
+        }
+        
+        function rotateCarousel(direction) {
+            currentRotation += direction;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const cards = document.querySelectorAll('.doctor-card');
+            
+            cards.forEach((card, index) => {
+                const angle = (index - currentRotation) * angleStep;
+                const rad = (angle * Math.PI) / 180;
+                const x = Math.sin(rad) * 400;
+                const z = Math.cos(rad) * 400;
+                const scale = (z + 400) / 800;
+                const opacity = scale;
+                const zIndex = Math.round(scale * 100);
+                
+                card.style.transform = `
+                    translate(-50%, -50%)
+                    translate3d(${x}px, 0, ${z}px)
+                    scale(${scale})
+                `;
+                card.style.opacity = opacity;
+                card.style.zIndex = zIndex;
+                card.style.filter = z < 0 ? 'blur(3px)' : 'blur(0)';
+            });
+        }
+        
+        // Initialize on load
+        window.addEventListener('load', initCarousel);
+        
+        // Auto-rotate
+        setInterval(() => {
+            rotateCarousel(1);
+        }, 4000);
+    </script>
+</body>
+</html>

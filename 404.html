@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-porcelain) 0%, var(--color-mint) 50%, var(--color-lavender) 100%);
+            background-attachment: fixed;
+        }
+        .zen-stones {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 3rem;
+            animation: tilt 3s ease-in-out infinite;
+        }
+        .stone {
+            position: absolute;
+            border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+            background: linear-gradient(145deg, #e0e0e0, #ffffff);
+            box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.4);
+            animation: fall 2s ease-out;
+        }
+        .stone1 { width: 120px; height: 80px; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .stone2 { width: 100px; height: 70px; bottom: 60px; left: 50%; transform: translateX(-50%) rotate(-15deg); }
+        .stone3 { width: 80px; height: 60px; bottom: 110px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 0.2s; }
+        .stone4 { width: 60px; height: 50px; bottom: 150px; left: 50%; transform: translateX(-50%) rotate(-8deg); animation-delay: 0.4s; }
+        
+        @keyframes tilt {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateX(-50%) translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) translateY(0) rotate(var(--rotation));
+                opacity: 1;
+            }
+        }
+        
+        .error-code {
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="organic-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div style="max-width: 700px;">
+            <div class="zen-stones">
+                <div class="stone stone1" style="--rotation: 0deg;"></div>
+                <div class="stone stone2" style="--rotation: -15deg;"></div>
+                <div class="stone stone3" style="--rotation: 10deg;"></div>
+                <div class="stone stone4" style="--rotation: -8deg;"></div>
+            </div>
+
+            <div class="error-code">404</div>
+            <h1 style="margin-bottom: 1rem;">Alignment Off</h1>
+            <p style="font-size: 1.25rem; color: var(--color-gray-600); margin-bottom: 3rem; max-width: 500px; margin-inline: auto;">
+                The page you're looking for has fallen out of balance. Let's get you back on track to your wellness journey.
+            </p>
+
+            <div class="flex gap-3 justify-center" style="flex-wrap: wrap;">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="ph ph-house"></i> Return Home
+                </a>
+                <a href="services.html" class="btn btn-secondary">
+                    <i class="ph ph-compass"></i> Explore Services
+                </a>
+                <a href="contact.html" class="btn btn-glass">
+                    <i class="ph ph-chat-circle"></i> Contact Support
+                </a>
+            </div>
+
+            <div class="glass-card mt-4" style="padding: 2rem; display: inline-block;">
+                <h4 style="margin-bottom: 1rem;">Popular Pages</h4>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="index.html" style="color: var(--color-gray-700);"><i class="ph ph-house"></i> Home</a>
+                    <a href="services.html" style="color: var(--color-gray-700);"><i class="ph ph-heart"></i> Services</a>
+                    <a href="pricing.html" style="color: var(--color-gray-700);"><i class="ph ph-tag"></i> Pricing</a>
+                    <a href="about.html" style="color: var(--color-gray-700);"><i class="ph ph-users"></i> About</a>
+                    <a href="book-appointment.html" style="color: var(--color-gray-700);"><i class="ph ph-calendar"></i> Book</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vitality.AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="ph ph-leaf"></i> Vitality.AI</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch"><div class="lang-toggle-slider"></div></div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 50vh; background: linear-gradient(135deg, var(--color-mint) 0%, var(--color-sage) 100%);">
+        <div class="container hero-content">
+            <h1 class="hero-title" style="color: white;">Get in Touch</h1>
+            <p class="hero-subtitle" style="color: white;">We're here to help you on your wellness journey</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="grid grid-2" style="gap: 4rem; align-items: start;">
+                <div class="glass-card" style="padding: 3rem;">
+                    <h2 style="margin-bottom: 2rem;">Send Us a Message</h2>
+                    <form data-validate>
+                        <div class="float-label form-group">
+                            <input type="text" class="form-input" id="name" placeholder=" " required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="float-label form-group">
+                            <input type="email" class="form-input" id="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="float-label form-group">
+                            <input type="tel" class="form-input" id="phone" placeholder=" " required>
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <select class="form-select" required>
+                                <option value="">Select a subject</option>
+                                <option value="appointment">Book Appointment</option>
+                                <option value="inquiry">General Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+                        <div class="float-label form-group">
+                            <textarea class="form-textarea" id="message" placeholder=" " required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">
+                            <i class="ph ph-paper-plane-tilt"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="clay-card" style="padding: 2rem; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem;">Contact Information</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div class="flex gap-3">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-sage), var(--color-mint)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                                    <i class="ph ph-map-pin" style="font-size: 1.5rem; color: white;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.5rem 0;">Address</h4>
+                                    <p style="margin: 0; color: var(--color-gray-600);">123 Wellness Boulevard<br>Health City, HC 12345</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-lavender), #D4A5F3); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                                    <i class="ph ph-phone" style="font-size: 1.5rem; color: white;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.5rem 0;">Phone</h4>
+                                    <p style="margin: 0; color: var(--color-gray-600);">+1 (555) 123-4567<br>+1 (555) 123-4568</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-coral), #FF8A73); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                                    <i class="ph ph-envelope" style="font-size: 1.5rem; color: white;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.5rem 0;">Email</h4>
+                                    <p style="margin: 0; color: var(--color-gray-600);">hello@vitalityai.com<br>support@vitalityai.com</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-mint), var(--color-sage)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                                    <i class="ph ph-clock" style="font-size: 1.5rem; color: white;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.5rem 0;">Hours</h4>
+                                    <p style="margin: 0; color: var(--color-gray-600);">Mon-Fri: 8:00 AM - 8:00 PM<br>Sat-Sun: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="padding: 0; overflow: hidden; height: 300px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a316e3931e7%3A0xfa0a3a8e8c9a5b5c!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="ph ph-leaf"></i> Vitality.AI</h4>
+                    <p style="color: var(--color-gray-400);">Experience the future of health and wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

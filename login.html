@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vitality.AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-porcelain) 0%, var(--color-mint) 50%, var(--color-lavender) 100%);
+            background-attachment: fixed;
+            padding: 2rem;
+        }
+        .login-card {
+            max-width: 450px;
+            width: 100%;
+        }
+        .biometric-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-mint));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--color-gray-300);
+        }
+        .divider span {
+            padding: 0 1rem;
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="organic-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="login-card glass-card" style="padding: 3rem;">
+            <div class="text-center">
+                <a href="index.html" style="display: inline-block; margin-bottom: 2rem;">
+                    <h2 class="logo"><i class="ph ph-leaf"></i> Vitality.AI</h2>
+                </a>
+            </div>
+
+            <div class="biometric-icon">
+                <i class="ph ph-fingerprint" style="font-size: 3rem; color: white;"></i>
+            </div>
+
+            <h2 class="text-center mb-2">Welcome Back</h2>
+            <p class="text-center mb-3" style="color: var(--color-gray-600);">Sign in to access your health dashboard</p>
+
+            <form data-validate>
+                <div class="float-label form-group">
+                    <input type="email" class="form-input" id="loginEmail" placeholder=" " required>
+                    <label for="loginEmail">Email Address</label>
+                </div>
+
+                <div class="float-label form-group">
+                    <input type="password" class="form-input" id="loginPassword" placeholder=" " required>
+                    <label for="loginPassword">Password</label>
+                </div>
+
+                <div class="flex justify-between items-center mb-3">
+                    <label class="flex items-center gap-2" style="cursor: pointer;">
+                        <input type="checkbox" style="width: 18px; height: 18px; cursor: pointer;">
+                        <span style="font-size: 0.9rem; color: var(--color-gray-600);">Remember me</span>
+                    </label>
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-sage); font-weight: 600;">Forgot Password?</a>
+                </div>
+
+                <button type="button" onclick="handleLogin()" class="btn btn-primary w-full mb-2">
+                    <i class="ph ph-sign-in"></i> Sign In
+                </button>
+
+                <button type="button" class="btn btn-glass w-full">
+                    <i class="ph ph-fingerprint"></i> Sign In with Biometrics
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+
+            <div class="grid grid-2" style="gap: 1rem;">
+                <button class="btn btn-glass">
+                    <i class="ph ph-google-logo"></i> Google
+                </button>
+                <button class="btn btn-glass">
+                    <i class="ph ph-apple-logo"></i> Apple
+                </button>
+            </div>
+
+            <p class="text-center mt-3" style="color: var(--color-gray-600);">
+                Don't have an account? 
+                <a href="#" style="color: var(--color-sage); font-weight: 600;">Sign up</a>
+            </p>
+
+            <div class="flex gap-2 justify-center mt-3">
+                <a href="user-dashboard.html" style="font-size: 0.85rem; color: var(--color-gray-600);">Patient Portal</a>
+                <span style="color: var(--color-gray-400);">|</span>
+                <a href="admin-dashboard.html" style="font-size: 0.85rem; color: var(--color-gray-600);">Admin Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function handleLogin() {
+            // Simulate login
+            if (window.VitalityAI && window.VitalityAI.showNotification) {
+                window.VitalityAI.showNotification('Login successful! Redirecting...', 'success');
+            }
+            setTimeout(() => {
+                window.location.href = 'user-dashboard.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

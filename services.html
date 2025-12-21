@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vitality.AI Services - Comprehensive wellness and medical services">
+    <title>Our Services - Vitality.AI</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .service-accordion {
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-base);
+        }
+        
+        .service-header:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .service-header.active {
+            background: linear-gradient(135deg, var(--color-sage), var(--color-mint));
+            color: white;
+            border-color: var(--color-sage);
+        }
+        
+        .service-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .service-body.active {
+            max-height: 1000px;
+            padding: 2rem;
+        }
+        
+        .service-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-mint));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-image i {
+            font-size: 6rem;
+            color: white;
+            z-index: 2;
+        }
+        
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800') center/cover;
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="ph ph-leaf"></i> Vitality.AI
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch">
+                            <div class="lang-toggle-slider"></div>
+                        </div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-mint) 100%);">
+        <div class="organic-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <h1 class="hero-title" style="color: white;">Our Premium Services</h1>
+            <p class="hero-subtitle" style="color: white;">Discover comprehensive wellness solutions tailored to your unique needs</p>
+        </div>
+    </section>
+
+    <!-- Services Accordion -->
+    <section>
+        <div class="container">
+            <!-- Cryotherapy -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-snowflake" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">Cryotherapy</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Whole-body cold therapy</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$150</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, #6DD5FA, #2980B9);">
+                            <i class="ph ph-snowflake"></i>
+                        </div>
+                        <div>
+                            <h4>Transform Your Recovery</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Experience temperatures as low as -140°C to boost recovery, reduce inflammation, and enhance performance.</p>
+                            
+                            <h5>Benefits:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Accelerated muscle recovery</li>
+                                <li>Reduced inflammation and pain</li>
+                                <li>Enhanced athletic performance</li>
+                                <li>Improved sleep quality</li>
+                                <li>Boosted metabolism</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-sage);">30 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Sessions</p>
+                                    <p style="margin: 0; color: var(--color-sage);">Single or Package</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-primary w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Diagnostics -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-brain" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">AI Diagnostics</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Advanced health screening</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$300</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-lavender), #D4A5F3);">
+                            <i class="ph ph-brain"></i>
+                        </div>
+                        <div>
+                            <h4>Powered by Artificial Intelligence</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">State-of-the-art health screening using AI to detect potential issues early and optimize your wellness plan.</p>
+                            
+                            <h5>Includes:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Full body composition analysis</li>
+                                <li>Cardiovascular health assessment</li>
+                                <li>Metabolic rate testing</li>
+                                <li>Blood biomarker analysis</li>
+                                <li>Personalized health report</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-lavender);">45 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Report</p>
+                                    <p style="margin: 0; color: var(--color-lavender);">Within 48 hours</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-secondary w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wellness Spa -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-sparkle" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">Wellness Spa</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Luxury spa treatments</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$200</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-coral), #FF8A73);">
+                            <i class="ph ph-sparkle"></i>
+                        </div>
+                        <div>
+                            <h4>Complete Relaxation</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Indulge in our luxurious spa treatments designed to rejuvenate your mind, body, and spirit.</p>
+                            
+                            <h5>Treatments Include:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Deep tissue massage</li>
+                                <li>Aromatherapy sessions</li>
+                                <li>Facial treatments</li>
+                                <li>Hydrotherapy</li>
+                                <li>Meditation guidance</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-coral);">60 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Customizable</p>
+                                    <p style="margin: 0; color: var(--color-coral);">Your preferences</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-accent w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Training -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-barbell" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">Personal Training</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">One-on-one fitness coaching</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$180</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-mint), var(--color-sage));">
+                            <i class="ph ph-barbell"></i>
+                        </div>
+                        <div>
+                            <h4>Achieve Your Fitness Goals</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Work with certified personal trainers who create customized workout plans tailored to your goals.</p>
+                            
+                            <h5>What You Get:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Personalized workout programs</li>
+                                <li>Form correction and technique training</li>
+                                <li>Nutrition guidance</li>
+                                <li>Progress tracking</li>
+                                <li>24/7 support via app</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-mint);">60 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Frequency</p>
+                                    <p style="margin: 0; color: var(--color-mint);">2-5x per week</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-primary w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nutrition Consultation -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-heartbeat" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">Nutrition Consultation</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Personalized nutrition planning</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$120</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-lavender), var(--color-coral));">
+                            <i class="ph ph-heartbeat"></i>
+                        </div>
+                        <div>
+                            <h4>Fuel Your Body Right</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Meet with certified dietitians who create personalized nutrition plans based on your health goals and lifestyle.</p>
+                            
+                            <h5>Services Include:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Comprehensive nutrition assessment</li>
+                                <li>Custom meal planning</li>
+                                <li>Supplement recommendations</li>
+                                <li>Food sensitivity testing</li>
+                                <li>Ongoing support and adjustments</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-lavender);">45 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Follow-ups</p>
+                                    <p style="margin: 0; color: var(--color-lavender);">Monthly check-ins</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-secondary w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio-Hacking -->
+            <div class="service-accordion animate-on-scroll">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-atom" style="font-size: 2rem;"></i>
+                        <div>
+                            <h3 style="margin: 0;">Bio-Hacking Program</h3>
+                            <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Optimize your biology</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span style="font-weight: 600; font-size: 1.25rem;">$400</span>
+                        <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                    </div>
+                </div>
+                <div class="service-body">
+                    <div class="service-content">
+                        <div class="service-image" style="background: linear-gradient(135deg, var(--color-sage), var(--color-coral));">
+                            <i class="ph ph-atom"></i>
+                        </div>
+                        <div>
+                            <h4>Peak Performance & Longevity</h4>
+                            <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Advanced optimization protocols combining cutting-edge science and technology for peak performance and longevity.</p>
+                            
+                            <h5>Program Includes:</h5>
+                            <ul style="color: var(--color-gray-600); margin-bottom: 1.5rem;">
+                                <li>Genetic testing and analysis</li>
+                                <li>Hormone optimization</li>
+                                <li>Sleep quality enhancement</li>
+                                <li>Cognitive performance training</li>
+                                <li>Longevity protocols</li>
+                            </ul>
+                            
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Duration</p>
+                                    <p style="margin: 0; color: var(--color-sage);">90 minutes</p>
+                                </div>
+                                <div style="background: var(--color-porcelain); padding: 1rem; border-radius: var(--radius-md); flex: 1;">
+                                    <p style="margin: 0; font-weight: 600;">Program</p>
+                                    <p style="margin: 0; color: var(--color-sage);">3-month minimum</p>
+                                </div>
+                            </div>
+                            
+                            <a href="book-appointment.html" class="btn btn-accent w-full">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-mint) 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Not Sure Which Service Is Right for You?</h2>
+            <p style="color: white; font-size: 1.25rem; margin-bottom: 2rem;">Schedule a free consultation with our wellness experts</p>
+            <a href="contact.html" class="btn btn-accent" style="background: white; color: var(--color-sage);">Schedule Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="ph ph-leaf"></i> Vitality.AI</h4>
+                    <p style="color: var(--color-gray-400);">Experience the future of health and wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#cryotherapy">Cryotherapy</a></li>
+                        <li><a href="#ai">AI Diagnostics</a></li>
+                        <li><a href="#spa">Wellness Spa</a></li>
+                        <li><a href="#training">Personal Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="ph ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph ph-envelope"></i> hello@vitalityai.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleService(header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('.ph-caret-down');
+            const allHeaders = document.querySelectorAll('.service-header');
+            const allBodies = document.querySelectorAll('.service-body');
+            const allIcons = document.querySelectorAll('.service-header .ph-caret-down');
+            
+            // Close all others
+            allHeaders.forEach(h => {
+                if (h !== header) h.classList.remove('active');
+            });
+            allBodies.forEach(b => {
+                if (b !== body) b.classList.remove('active');
+            });
+            allIcons.forEach(i => {
+                if (i !== icon) i.style.transform = 'rotate(0deg)';
+            });
+            
+            // Toggle current
+            header.classList.toggle('active');
+            body.classList.toggle('active');
+            icon.style.transform = body.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
+</body>
+</html>

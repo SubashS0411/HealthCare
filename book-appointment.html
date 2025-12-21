@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Vitality.AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .wizard-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .wizard-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .wizard-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-gray-300);
+            z-index: -1;
+        }
+        .wizard-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            cursor: pointer;
+        }
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--color-gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .wizard-step.active .step-circle {
+            background: var(--color-sage);
+            border-color: var(--color-sage);
+            color: white;
+        }
+        .wizard-step.completed .step-circle {
+            background: var(--color-mint);
+            border-color: var(--color-mint);
+            color: white;
+        }
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--color-gray-600);
+            text-align: center;
+        }
+        .wizard-step.active .step-label {
+            color: var(--color-sage);
+            font-weight: 600;
+        }
+        .wizard-content {
+            display: none;
+        }
+        .wizard-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        .service-option {
+            padding: 1.5rem;
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        .service-option:hover {
+            border-color: var(--color-sage);
+            background: var(--color-porcelain);
+        }
+        .service-option.selected {
+            border-color: var(--color-sage);
+            background: rgba(139, 191, 159, 0.1);
+        }
+        .doctor-option {
+            padding: 1.5rem;
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .doctor-option:hover {
+            border-color: var(--color-lavender);
+            transform: translateX(5px);
+        }
+        .doctor-option.selected {
+            border-color: var(--color-lavender);
+            background: rgba(224, 195, 252, 0.1);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .calendar-day:hover:not(.disabled) {
+            background: var(--color-mint);
+            color: white;
+        }
+        .calendar-day.selected {
+            background: var(--color-sage);
+            color: white;
+        }
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .time-slot {
+            padding: 1rem;
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .time-slot:hover {
+            border-color: var(--color-coral);
+            background: rgba(255, 159, 136, 0.1);
+        }
+        .time-slot.selected {
+            border-color: var(--color-coral);
+            background: var(--color-coral);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .wizard-steps {
+                flex-wrap: wrap;
+            }
+            .wizard-step {
+                flex: 0 0 50%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="ph ph-leaf"></i> Vitality.AI</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch"><div class="lang-toggle-slider"></div></div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section style="padding-block: 6rem; min-height: 100vh;">
+        <div class="container wizard-container">
+            <h1 class="text-center mb-3">Book Your Appointment</h1>
+            <p class="text-center mb-4" style="color: var(--color-gray-600);">Follow these simple steps to schedule your visit</p>
+
+            <div class="wizard-steps">
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Select Service</span>
+                </div>
+                <div class="wizard-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Choose Provider</span>
+                </div>
+                <div class="wizard-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Date & Time</span>
+                </div>
+                <div class="wizard-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">Your Details</span>
+                </div>
+                <div class="wizard-step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <span class="step-label">Confirm</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Select Service -->
+            <div class="wizard-content active glass-card" data-step="1" style="padding: 3rem;">
+                <h2 class="mb-3">Select a Service</h2>
+                <div class="service-option" onclick="selectService(this, 'cryotherapy')">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-snowflake" style="font-size: 2.5rem; color: var(--color-sage);"></i>
+                        <div class="flex-1">
+                            <h4 style="margin: 0 0 0.5rem 0;">Cryotherapy</h4>
+                            <p style="margin: 0; color: var(--color-gray-600);">Whole-body cold therapy for recovery</p>
+                        </div>
+                        <span style="font-weight: 700; font-size: 1.25rem; color: var(--color-sage);">$150</span>
+                    </div>
+                </div>
+                <div class="service-option" onclick="selectService(this, 'ai-diagnostics')">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-brain" style="font-size: 2.5rem; color: var(--color-lavender);"></i>
+                        <div class="flex-1">
+                            <h4 style="margin: 0 0 0.5rem 0;">AI Diagnostics</h4>
+                            <p style="margin: 0; color: var(--color-gray-600);">Advanced health screening</p>
+                        </div>
+                        <span style="font-weight: 700; font-size: 1.25rem; color: var(--color-lavender);">$300</span>
+                    </div>
+                </div>
+                <div class="service-option" onclick="selectService(this, 'wellness-spa')">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-sparkle" style="font-size: 2.5rem; color: var(--color-coral);"></i>
+                        <div class="flex-1">
+                            <h4 style="margin: 0 0 0.5rem 0;">Wellness Spa</h4>
+                            <p style="margin: 0; color: var(--color-gray-600);">Luxury spa treatments</p>
+                        </div>
+                        <span style="font-weight: 700; font-size: 1.25rem; color: var(--color-coral);">$200</span>
+                    </div>
+                </div>
+                <div class="service-option" onclick="selectService(this, 'personal-training')">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-barbell" style="font-size: 2.5rem; color: var(--color-mint);"></i>
+                        <div class="flex-1">
+                            <h4 style="margin: 0 0 0.5rem 0;">Personal Training</h4>
+                            <p style="margin: 0; color: var(--color-gray-600);">One-on-one fitness coaching</p>
+                        </div>
+                        <span style="font-weight: 700; font-size: 1.25rem; color: var(--color-mint);">$180</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-full mt-3" onclick="nextStep()">Continue</button>
+            </div>
+
+            <!-- Step 2: Choose Provider -->
+            <div class="wizard-content glass-card" data-step="2" style="padding: 3rem;">
+                <h2 class="mb-3">Choose Your Provider</h2>
+                <div class="doctor-option" onclick="selectDoctor(this, 'dr-mitchell')">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-sage), var(--color-mint)); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-user-circle" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 style="margin: 0 0 0.5rem 0;">Dr. Sarah Mitchell</h4>
+                        <p style="margin: 0; color: var(--color-gray-600);">Chief Medical Officer</p>
+                    </div>
+                </div>
+                <div class="doctor-option" onclick="selectDoctor(this, 'dr-chen')">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-lavender), #D4A5F3); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-user-circle" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 style="margin: 0 0 0.5rem 0;">Dr. James Chen</h4>
+                        <p style="margin: 0; color: var(--color-gray-600);">Sports Medicine Specialist</p>
+                    </div>
+                </div>
+                <div class="doctor-option" onclick="selectDoctor(this, 'dr-rodriguez')">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-coral), #FF8A73); display: flex; align-items: center; justify-content: center;">
+                        <i class="ph ph-user-circle" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 style="margin: 0 0 0.5rem 0;">Dr. Emily Rodriguez</h4>
+                        <p style="margin: 0; color: var(--color-gray-600);">Wellness & Nutrition Expert</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3">
+                    <button class="btn btn-glass flex-1" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary flex-1" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Date & Time -->
+            <div class="wizard-content glass-card" data-step="3" style="padding: 3rem;">
+                <h2 class="mb-3">Select Date & Time</h2>
+                <h4 class="mb-2">Choose a Date</h4>
+                <div class="calendar-grid">
+                    <div style="font-weight: 700; text-align: center;">Mon</div>
+                    <div style="font-weight: 700; text-align: center;">Tue</div>
+                    <div style="font-weight: 700; text-align: center;">Wed</div>
+                    <div style="font-weight: 700; text-align: center;">Thu</div>
+                    <div style="font-weight: 700; text-align: center;">Fri</div>
+                    <div style="font-weight: 700; text-align: center;">Sat</div>
+                    <div style="font-weight: 700; text-align: center;">Sun</div>
+                    <div class="calendar-day disabled">27</div>
+                    <div class="calendar-day disabled">28</div>
+                    <div class="calendar-day disabled">29</div>
+                    <div class="calendar-day disabled">30</div>
+                    <div class="calendar-day disabled">31</div>
+                    <div class="calendar-day" onclick="selectDate(this)">1</div>
+                    <div class="calendar-day" onclick="selectDate(this)">2</div>
+                    <div class="calendar-day" onclick="selectDate(this)">3</div>
+                    <div class="calendar-day" onclick="selectDate(this)">4</div>
+                    <div class="calendar-day" onclick="selectDate(this)">5</div>
+                    <div class="calendar-day" onclick="selectDate(this)">6</div>
+                    <div class="calendar-day" onclick="selectDate(this)">7</div>
+                    <div class="calendar-day" onclick="selectDate(this)">8</div>
+                    <div class="calendar-day" onclick="selectDate(this)">9</div>
+                </div>
+                <h4 class="mb-2">Choose a Time</h4>
+                <div class="grid grid-4" style="gap: 1rem;">
+                    <div class="time-slot" onclick="selectTime(this)">9:00 AM</div>
+                    <div class="time-slot" onclick="selectTime(this)">10:00 AM</div>
+                    <div class="time-slot" onclick="selectTime(this)">11:00 AM</div>
+                    <div class="time-slot" onclick="selectTime(this)">1:00 PM</div>
+                    <div class="time-slot" onclick="selectTime(this)">2:00 PM</div>
+                    <div class="time-slot" onclick="selectTime(this)">3:00 PM</div>
+                    <div class="time-slot" onclick="selectTime(this)">4:00 PM</div>
+                    <div class="time-slot" onclick="selectTime(this)">5:00 PM</div>
+                </div>
+                <div class="flex gap-2 mt-3">
+                    <button class="btn btn-glass flex-1" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary flex-1" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Your Details -->
+            <div class="wizard-content glass-card" data-step="4" style="padding: 3rem;">
+                <h2 class="mb-3">Your Information</h2>
+                <form id="detailsForm">
+                    <div class="float-label form-group">
+                        <input type="text" class="form-input" id="fullName" placeholder=" " required>
+                        <label for="fullName">Full Name</label>
+                    </div>
+                    <div class="float-label form-group">
+                        <input type="email" class="form-input" id="email" placeholder=" " required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="float-label form-group">
+                        <input type="tel" class="form-input" id="phone" placeholder=" " required>
+                        <label for="phone">Phone Number</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Any Special Requests or Medical Conditions?</label>
+                        <textarea class="form-textarea" id="notes" placeholder="Optional notes..."></textarea>
+                    </div>
+                </form>
+                <div class="flex gap-2 mt-3">
+                    <button class="btn btn-glass flex-1" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary flex-1" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Confirm -->
+            <div class="wizard-content glass-card" data-step="5" style="padding: 3rem;">
+                <h2 class="mb-3">Confirm Your Appointment</h2>
+                <div class="clay-card mb-3" style="padding: 2rem;">
+                    <h4 style="margin-bottom: 1.5rem;">Appointment Summary</h4>
+                    <div style="display: grid; gap: 1rem;">
+                        <div class="flex justify-between">
+                            <span style="color: var(--color-gray-600);">Service:</span>
+                            <strong id="summaryService">Cryotherapy</strong>
+                        </div>
+                        <div class="flex justify-between">
+                            <span style="color: var(--color-gray-600);">Provider:</span>
+                            <strong id="summaryDoctor">Dr. Sarah Mitchell</strong>
+                        </div>
+                        <div class="flex justify-between">
+                            <span style="color: var(--color-gray-600);">Date:</span>
+                            <strong id="summaryDate">January 5, 2025</strong>
+                        </div>
+                        <div class="flex justify-between">
+                            <span style="color: var(--color-gray-600);">Time:</span>
+                            <strong id="summaryTime">10:00 AM</strong>
+                        </div>
+                        <div class="flex justify-between" style="border-top: 2px solid var(--color-gray-200); padding-top: 1rem; margin-top: 1rem;">
+                            <span style="color: var(--color-gray-600);">Total:</span>
+                            <strong style="font-size: 1.5rem; color: var(--color-sage);">$150</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="btn btn-glass flex-1" onclick="prevStep()">Back</button>
+                    <button class="btn btn-accent flex-1" onclick="confirmAppointment()">
+                        <i class="ph ph-check-circle"></i> Confirm Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateWizard();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateWizard();
+            }
+        }
+
+        function updateWizard() {
+            document.querySelectorAll('.wizard-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.wizard-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+                const stepNum = parseInt(step.dataset.step);
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+            document.querySelector(`.wizard-content[data-step="${currentStep}"]`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectService(element, service) {
+            document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectDoctor(element, doctor) {
+            document.querySelectorAll('.doctor-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectDate(element) {
+            document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectTime(element) {
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function confirmAppointment() {
+            if (window.VitalityAI && window.VitalityAI.showNotification) {
+                window.VitalityAI.showNotification('Appointment confirmed! You will receive a confirmation email shortly.', 'success');
+            }
+            setTimeout(() => {
+                window.location.href = 'user-dashboard.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

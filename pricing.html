@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Vitality.AI</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .pricing-card {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        .pricing-card.featured {
+            border: 3px solid #FFD700;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+        }
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .pricing-table {
+            overflow-x: auto;
+            margin: 3rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        thead {
+            position: sticky;
+            top: 70px;
+            background: white;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 1.25rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        th {
+            font-weight: 700;
+            background: var(--color-sage);
+            color: white;
+        }
+        th:first-child {
+            text-align: start;
+            border-top-left-radius: var(--radius-md);
+        }
+        th:last-child {
+            border-top-right-radius: var(--radius-md);
+        }
+        tr:hover td {
+            background: var(--color-porcelain);
+        }
+        td:first-child {
+            text-align: start;
+            font-weight: 600;
+        }
+        .check-icon {
+            color: var(--color-sage);
+            font-size: 1.5rem;
+        }
+        .cross-icon {
+            color: var(--color-gray-300);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="ph ph-leaf"></i> Vitality.AI</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="book-appointment.html" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch"><div class="lang-toggle-slider"></div></div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 50vh; background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-sage) 100%);">
+        <div class="container hero-content">
+            <h1 class="hero-title" style="color: white;">Wellness Plans</h1>
+            <p class="hero-subtitle" style="color: white;">Choose the perfect plan for your health journey</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="pricing-card glass-card animate-on-scroll" style="padding: 3rem;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <i class="ph ph-leaf" style="font-size: 3rem; color: var(--color-mint);"></i>
+                        <h3 style="margin: 1rem 0;">Recovery</h3>
+                        <div style="font-size: 3rem; font-weight: 700; color: var(--color-sage); margin: 1rem 0;">$199</div>
+                        <p style="color: var(--color-gray-600);">per month</p>
+                    </div>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> 4 Personal Training Sessions</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Basic Health Screening</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Nutrition Consultation</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Wellness App Access</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-x-circle cross-icon"></i> Cryotherapy</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-x-circle cross-icon"></i> AI Diagnostics</li>
+                    </ul>
+                    <a href="book-appointment.html" class="btn btn-primary w-full">Get Started</a>
+                </div>
+
+                <div class="pricing-card glass-card featured animate-on-scroll" style="padding: 3rem;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <i class="ph ph-lightning" style="font-size: 3rem; color: var(--color-coral);"></i>
+                        <h3 style="margin: 1rem 0;">Performance</h3>
+                        <div style="font-size: 3rem; font-weight: 700; color: var(--color-coral); margin: 1rem 0;">$399</div>
+                        <p style="color: var(--color-gray-600);">per month</p>
+                    </div>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> 8 Personal Training Sessions</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Advanced Health Screening</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Personalized Nutrition Plan</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> 4 Cryotherapy Sessions</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Monthly AI Diagnostics</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Priority Booking</li>
+                    </ul>
+                    <a href="book-appointment.html" class="btn btn-accent w-full">Get Started</a>
+                </div>
+
+                <div class="pricing-card glass-card animate-on-scroll" style="padding: 3rem;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <i class="ph ph-crown" style="font-size: 3rem; color: var(--color-lavender);"></i>
+                        <h3 style="margin: 1rem 0;">Ultimate</h3>
+                        <div style="font-size: 3rem; font-weight: 700; color: var(--color-lavender); margin: 1rem 0;">$699</div>
+                        <p style="color: var(--color-gray-600);">per month</p>
+                    </div>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Unlimited Training Sessions</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Comprehensive AI Diagnostics</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Custom Meal Planning</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Unlimited Cryotherapy</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> Bio-Hacking Program</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--color-gray-200);"><i class="ph ph-check-circle check-icon"></i> 24/7 Concierge Support</li>
+                    </ul>
+                    <a href="book-appointment.html" class="btn btn-secondary w-full">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--color-porcelain);">
+        <div class="container">
+            <h2 class="section-title">Detailed Comparison</h2>
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Recovery</th>
+                            <th>Performance</th>
+                            <th>Ultimate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Personal Training Sessions</td>
+                            <td>4 per month</td>
+                            <td>8 per month</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Health Screening</td>
+                            <td>Basic</td>
+                            <td>Advanced</td>
+                            <td>Comprehensive</td>
+                        </tr>
+                        <tr>
+                            <td>Nutrition Consultation</td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Cryotherapy Sessions</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td>4 per month</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>AI Diagnostics</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td>Monthly</td>
+                            <td>Weekly</td>
+                        </tr>
+                        <tr>
+                            <td>Wellness Spa Access</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td>2 per month</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Bio-Hacking Program</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Priority Booking</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>24/7 Support</td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td><i class="ph-fill ph-x-circle cross-icon"></i></td>
+                            <td><i class="ph-fill ph-check-circle check-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-mint) 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Not Sure Which Plan Is Right?</h2>
+            <p style="color: white; font-size: 1.25rem; margin-bottom: 2rem;">Schedule a free consultation and we'll help you choose</p>
+            <a href="contact.html" class="btn btn-accent" style="background: white; color: var(--color-sage);">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="ph ph-leaf"></i> Vitality.AI</h4>
+                    <p style="color: var(--color-gray-400);">Experience the future of health and wellness.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

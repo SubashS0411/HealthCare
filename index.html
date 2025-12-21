@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vitality.AI - Next Gen Wellness Platform. Experience the future of health and wellness with our premium medical and spa services.">
+    <title>Vitality.AI - Rejuvenate Your Life</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="ph ph-leaf"></i> Vitality.AI
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" onclick="toggleDropdown(this)">
+                        <i class="ph ph-house"></i> Home <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="index.html" class="nav-dropdown-item">
+                            <i class="ph ph-hospital"></i> Home Version 1
+                        </a>
+                        <a href="index2.html" class="nav-dropdown-item">
+                            <i class="ph ph-dumbbell"></i> Home Version 2
+                        </a>
+                    </div>
+                </li>
+                <li><a href="services.html" class="nav-link" data-translate="services">Services</a></li>
+                <li><a href="about.html" class="nav-link" data-translate="about">About</a></li>
+                <li><a href="pricing.html" class="nav-link" data-translate="pricing">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link" data-translate="contact">Contact</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" onclick="toggleDropdown(this)">
+                        <i class="ph ph-chart-line"></i> Dashboard <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="admin-dashboard.html" class="nav-dropdown-item">
+                            <i class="ph ph-users-three"></i> Admin Dashboard
+                        </a>
+                        <a href="user-dashboard.html" class="nav-dropdown-item">
+                            <i class="ph ph-user"></i> User Dashboard
+                        </a>
+                    </div>
+                </li>
+                <li><a href="book-appointment.html" class="btn btn-primary" data-translate="bookAppointment">Book Appointment</a></li>
+                <li><a href="login.html" class="nav-link" data-translate="login">Login</a></li>
+                <li>
+                    <div class="lang-toggle">
+                        <span class="lang-label">English</span>
+                        <div class="lang-toggle-switch">
+                            <div class="lang-toggle-slider"></div>
+                        </div>
+                        <i class="ph ph-globe"></i>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://cdn.coverr.co/videos/coverr-meditation-and-wellness-5351/1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="organic-bg">
+            <div class="blob blob-1" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent));"></div>
+            <div class="blob blob-2" style="background: linear-gradient(135deg, var(--color-accent), var(--color-purple));"></div>
+            <div class="blob blob-3" style="background: linear-gradient(135deg, var(--color-purple), var(--color-info));"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <h1 class="hero-title" data-translate="heroTitle">Rejuvenate Your Life</h1>
+            <p class="hero-subtitle" data-translate="heroSubtitle">Experience the future of health and wellness with our premium medical and spa services</p>
+            
+            <!-- Smart Booking Search Bar -->
+            <div class="glass-card breathe" style="max-width: 700px; margin: 0 auto;">
+                <form class="flex gap-2" style="flex-wrap: wrap;">
+                    <div class="flex-1" style="min-width: 200px;">
+                        <select class="form-select">
+                            <option value="">Select Service</option>
+                            <option value="cryotherapy">Cryotherapy</option>
+                            <option value="ai-diagnostics">AI Diagnostics</option>
+                            <option value="wellness-spa">Wellness Spa</option>
+                            <option value="personal-training">Personal Training</option>
+                            <option value="nutrition">Nutrition Consultation</option>
+                        </select>
+                    </div>
+                    <div class="flex-1" style="min-width: 200px;">
+                        <input type="date" class="form-input" placeholder="Select Date">
+                    </div>
+                    <button type="button" class="btn btn-accent" onclick="window.location.href='book-appointment.html'">
+                        <i class="ph ph-calendar-check"></i>
+                        <span data-translate="bookNow">Book Now</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Logos Section -->
+    <section style="background: white; padding: 2rem 0; overflow: hidden;">
+        <div class="container">
+            <p class="text-center" style="color: rgba(255,255,255,0.8); margin-bottom: 1rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Trusted By Leading Organizations</p>
+            <div class="flex items-center justify-center gap-4" style="flex-wrap: wrap; opacity: 0.9;">
+                <div class="glass-card" style="padding: 1rem 2rem;">
+                    <i class="ph ph-hospital" style="font-size: 2rem; color: var(--color-sage);"></i>
+                </div>
+                <div class="glass-card" style="padding: 1rem 2rem;">
+                    <i class="ph ph-shield-checkered" style="font-size: 2rem; color: var(--color-lavender);"></i>
+                </div>
+                <div class="glass-card" style="padding: 1rem 2rem;">
+                    <i class="ph ph-brain" style="font-size: 2rem; color: var(--color-accent);"></i>
+                </div>
+                <div class="glass-card" style="padding: 1rem 2rem;">
+                    <i class="ph ph-heartbeat" style="font-size: 2rem; color: var(--color-info-light);"></i>
+                </div>
+                <div class="glass-card" style="padding: 1rem 2rem;">
+                    <i class="ph ph-certificate" style="font-size: 2rem; color: var(--color-primary-light);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section>
+        <div class="organic-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Premium Services</h2>
+            <p class="section-subtitle animate-on-scroll">Discover personalized treatments designed for your optimal wellness</p>
+            
+            <div class="grid grid-3">
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-info), var(--color-info-light)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-snowflake" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">Cryotherapy</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Boost recovery and performance with whole-body cold therapy sessions</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-info-light); font-weight: 600;">30 min | $150</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-brain" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">AI Diagnostics</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Advanced health screening powered by artificial intelligence</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-primary-light); font-weight: 600;">45 min | $300</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-sparkle" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">Wellness Spa</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Luxurious spa treatments for complete mind-body relaxation</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-accent-light); font-weight: 600;">60 min | $200</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-success), var(--color-success-light)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-barbell" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">Personal Training</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">One-on-one fitness coaching tailored to your goals</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-success-light); font-weight: 600;">60 min | $180</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-warning), var(--color-orange)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-heartbeat" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">Nutrition</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Personalized nutrition plans from certified dietitians</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-warning); font-weight: 600;">45 min | $120</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="background: linear-gradient(135deg, var(--color-purple), var(--color-violet)); padding: 1rem; border-radius: var(--radius-md);">
+                            <i class="ph ph-atom" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="margin: 0;">Bio-Hacking</h3>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Optimize your biology for peak performance and longevity</p>
+                    <div class="flex justify-between items-center mt-3">
+                        <span style="color: var(--color-purple); font-weight: 600;">90 min | $400</span>
+                        <a href="services.html" class="btn btn-glass" style="padding: 0.5rem 1rem;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="services.html" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-accent) 100%); color: white;">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="text-center animate-on-scroll">
+                    <i class="ph ph-users" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h3 style="color: white; font-size: 3rem; margin-bottom: 0.5rem;">5000+</h3>
+                    <p style="color: white; opacity: 0.9;">Happy Patients</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <i class="ph ph-certificate" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h3 style="color: white; font-size: 3rem; margin-bottom: 0.5rem;">50+</h3>
+                    <p style="color: white; opacity: 0.9;">Expert Doctors</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <i class="ph ph-trophy" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h3 style="color: white; font-size: 3rem; margin-bottom: 0.5rem;">25+</h3>
+                    <p style="color: white; opacity: 0.9;">Awards Won</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <i class="ph ph-star" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h3 style="color: white; font-size: 3rem; margin-bottom: 0.5rem;">4.9/5</h3>
+                    <p style="color: white; opacity: 0.9;">Patient Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">What Our Patients Say</h2>
+            <p class="section-subtitle animate-on-scroll">Real stories from people who transformed their lives with us</p>
+            
+            <div class="grid grid-3">
+                <div class="clay-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-sage), var(--color-mint)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">SM</div>
+                        <div>
+                            <h4 style="margin: 0;">Sarah Mitchell</h4>
+                            <div style="color: var(--color-coral);">
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--color-gray-600); font-style: italic;">"The AI diagnostics caught a health issue early that my regular doctor missed. The team here saved my life. Forever grateful!"</p>
+                </div>
+                
+                <div class="clay-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-lavender), #D4A5F3); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">JC</div>
+                        <div>
+                            <h4 style="margin: 0;">James Chen</h4>
+                            <div style="color: var(--color-coral);">
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--color-gray-600); font-style: italic;">"As an athlete, cryotherapy and personal training here have taken my performance to the next level. Highly recommend!"</p>
+                </div>
+                
+                <div class="clay-card animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-coral), #FF8A73); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;">EA</div>
+                        <div>
+                            <h4 style="margin: 0;">Emma Anderson</h4>
+                            <div style="color: var(--color-coral);">
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                                <i class="ph-fill ph-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--color-gray-600); font-style: italic;">"The wellness spa is pure luxury. I feel rejuvenated after every session. It's my monthly self-care ritual now."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-coral) 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Ready to Transform Your Health?</h2>
+            <p style="color: white; font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">Join thousands of satisfied patients on their wellness journey</p>
+            <div class="flex gap-3 justify-center" style="flex-wrap: wrap;">
+                <a href="book-appointment.html" class="btn btn-accent" style="background: white; color: var(--color-coral);">Book Your First Session</a>
+                <a href="contact.html" class="btn btn-glass">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="ph ph-leaf"></i> Vitality.AI</h4>
+                    <p style="color: var(--color-gray-400);">Experience the future of health and wellness with cutting-edge technology and personalized care.</p>
+                    <div class="flex gap-2 mt-3">
+                        <a href="#" class="btn btn-glass" style="padding: 0.75rem; border-radius: 50%;">
+                            <i class="ph ph-facebook-logo"></i>
+                        </a>
+                        <a href="#" class="btn btn-glass" style="padding: 0.75rem; border-radius: 50%;">
+                            <i class="ph ph-twitter-logo"></i>
+                        </a>
+                        <a href="#" class="btn btn-glass" style="padding: 0.75rem; border-radius: 50%;">
+                            <i class="ph ph-instagram-logo"></i>
+                        </a>
+                        <a href="#" class="btn btn-glass" style="padding: 0.75rem; border-radius: 50%;">
+                            <i class="ph ph-linkedin-logo"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index2.html">Fitness Focus</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Patient Portal</h4>
+                    <ul class="footer-links">
+                        <li><a href="book-appointment.html">Book Appointment</a></li>
+                        <li><a href="login.html">Patient Login</a></li>
+                        <li><a href="user-dashboard.html">My Dashboard</a></li>
+                        <li><a href="admin-dashboard.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><i class="ph ph-map-pin"></i> 123 Wellness Boulevard, Health City</li>
+                        <li><i class="ph ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph ph-envelope"></i> hello@vitalityai.com</li>
+                        <li><i class="ph ph-clock"></i> Mon-Fri: 8AM-8PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitality.AI. All rights reserved. | <a href="#" style="color: var(--color-mint);">Privacy Policy</a> | <a href="#" style="color: var(--color-mint);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
