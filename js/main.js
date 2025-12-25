@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   initDropdowns();
   initScrollTop();
+  initScrollProgress();
+  initScrollSpy();
   initDirectionToggle();
   initVideoModal();
 });
@@ -332,6 +334,92 @@ function initScrollTop() {
   scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+// Scroll Progress Bar
+function initScrollProgress() {
+  const progressBar = document.querySelector('.scroll-progress-bar');
+  if (!progressBar) return;
+
+  const updateProgress = () => {
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop || 0;
+    const scrollHeight = (doc.scrollHeight || 0) - (doc.clientHeight || 0);
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+  };
+
+  updateProgress();
+  window.addEventListener('scroll', throttle(updateProgress, 16), { passive: true });
+  window.addEventListener('resize', debounce(updateProgress, 120));
+}
+
+// Scroll Spy: highlight nav links based on visible sections
+function initScrollSpy() {
+  const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'))
+    .filter(link => {
+      const href = link.getAttribute('href');
+      return href && href.length > 1;
+    });
+
+  if (!navLinks.length) return;
+
+  const getIdFromHref = (href) => (href && href.startsWith('#') ? href.slice(1) : null);
+  const sections = navLinks
+    .map(link => document.getElementById(getIdFromHref(link.getAttribute('href'))))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const setActive = (id) => {
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+  };
+
+  const updateByScrollPosition = () => {
+    const offset = 120;
+    const scrollPos = window.scrollY + offset;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.offsetTop <= scrollPos) current = section;
+    }
+    if (current && current.id) setActive(current.id);
+  };
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = getIdFromHref(link.getAttribute('href'));
+      if (id) setActive(id);
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    let currentId = null;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (!visible.length) return;
+
+      const id = visible[0].target && visible[0].target.id;
+      if (id && id !== currentId) {
+        currentId = id;
+        setActive(id);
+      }
+    }, {
+      root: null,
+      threshold: [0, 0.15, 0.35, 0.6],
+      rootMargin: '-25% 0px -55% 0px'
+    });
+
+    sections.forEach(section => observer.observe(section));
+    setTimeout(updateByScrollPosition, 60);
+  } else {
+    updateByScrollPosition();
+    window.addEventListener('scroll', throttle(updateByScrollPosition, 100), { passive: true });
+  }
 }
 
 // Notification System
