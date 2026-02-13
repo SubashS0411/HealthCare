@@ -761,8 +761,22 @@
 
 /* Fix for Wellness Hero Background Visibility */
 #home.hero {
-    background: linear-gradient(135deg, #4F46E5 0%, #0F172A 100%);
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
     position: relative;
+    color: #fff;
+}
+
+#home.hero h1, 
+#home.hero h2, 
+#home.hero h3, 
+#home.hero p,
+#home.hero .hero-stat-number,
+#home.hero .hero-stat-label {
+    color: #fff !important;
+}
+
+#home.hero .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 #home.hero::before {
@@ -780,6 +794,78 @@
 #home.hero>* {
     position: relative;
     z-index: 2;
+}
+
+/* Hero section button contrast fix */
+#home.hero .btn-outline {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+}
+#home.hero .btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #fff;
+}
+
+/* Hero stats contrast */
+#home.hero .hero-stat {
+    text-align: left;
+}
+#home.hero .hero-stat-number {
+    color: #fff !important;
+    font-weight: 800;
+}
+#home.hero .hero-stat-label {
+    color: rgba(255,255,255,0.75) !important;
+}
+
+/* Section title colors for light backgrounds */
+#services .section-title,
+#about .section-title,
+#pricing .section-title,
+#contact .section-title {
+    color: var(--color-gray-900);
+}
+
+#services .section-subtitle,
+#about .section-subtitle,
+#pricing .section-subtitle,
+#contact .section-subtitle {
+    color: var(--color-gray-500);
+}
+
+/* Premium section separators */
+.features-showcase,
+#services,
+#about,
+#pricing,
+#contact,
+.testimonials-section {
+    position: relative;
+}
+
+/* Service image grid overlay transitions */
+.service-image img,
+.feature-img img {
+    transition: transform 0.5s ease;
+}
+.service-image:hover img,
+.feature-img:hover img {
+    transform: scale(1.05);
+}
+
+/* Testimonial card premium style */
+.testimonial-card {
+    transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* Newsletter input focus */
+.footer input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
 }
 
 /* Fix generic p contrast if needed */
