@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/one-page-styles.css" /> <!-- New Merged Styles -->
+  <link rel="stylesheet" href="css/hero-override.css" /> <!-- Hero Override Fix -->
 
 </head>
 
@@ -109,61 +110,82 @@
         </div>
 
         <div class="container" style="position: relative; z-index: 2;">
-          <div class="hero-grid hero-grid--home1">
+          <div class="hero-grid hero-grid--home1"
+            style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3rem; align-items: center; width: 100%;">
 
             <!-- ===== LEFT: Stunning Image Composition ===== -->
-            <div class="hero-image-composition" data-animate="fade-right">
+            <div class="hero-image-composition"
+              style="position: relative; width: 100%; min-height: 620px; opacity: 1; transform: none;">
               <!-- Decorative gradient blob behind -->
-              <div class="hero-blob"></div>
+              <div class="hero-blob"
+                style="position: absolute; width: 90%; max-width: 550px; aspect-ratio: 1; background: radial-gradient(circle, rgba(99,102,241,0.35), rgba(236,72,153,0.2), transparent 70%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); filter: blur(80px); z-index: 0;">
+              </div>
               <!-- Decorative dots pattern -->
-              <div class="hero-dots-pattern"></div>
+              <div class="hero-dots-pattern"
+                style="position: absolute; width: 200px; height: 200px; top: 0; left: 0; background-image: radial-gradient(rgba(255,255,255,0.15) 1.5px, transparent 1.5px); background-size: 18px 18px; z-index: 0;">
+              </div>
 
               <!-- Main Doctor Image -->
-              <div class="hero-img-main">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&h=900&fit=crop&crop=faces&q=80"
-                  alt="Expert Doctor" loading="eager" />
+              <div class="hero-img-main"
+                style="position: absolute; top: 3%; left: 2%; width: 72%; max-width: 500px; aspect-ratio: 4/5; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1); z-index: 2;">
+                <img
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&h=900&fit=crop&crop=faces&q=80"
+                  alt="Expert Doctor" loading="eager"
+                  style="width: 100%; height: 100%; object-fit: cover; display: block;" />
               </div>
 
               <!-- Secondary Image (overlapping) -->
-              <div class="hero-img-secondary float-premium">
+              <div class="hero-img-secondary"
+                style="position: absolute; bottom: 5%; right: 0; width: 55%; max-width: 380px; aspect-ratio: 4/3; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 0 0 3px rgba(255,255,255,0.15); z-index: 3; background: #1e1b4b;">
                 <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop&q=80"
-                  alt="Modern Medical Facility" loading="eager" />
+                  alt="Modern Medical Facility" loading="eager"
+                  style="width: 100%; height: 100%; object-fit: cover; display: block;" />
               </div>
 
               <!-- Third Image (small circle) -->
-              <div class="hero-img-circle float-premium-delayed">
+              <div class="hero-img-circle"
+                style="position: absolute; top: 8%; right: 0; width: 130px; height: 130px; border-radius: 50%; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.2); z-index: 4; background: #1e1b4b;">
                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200&h=200&fit=crop&q=80"
-                  alt="AI Technology" loading="eager" />
+                  alt="AI Technology" loading="eager"
+                  style="width: 100%; height: 100%; object-fit: cover; display: block;" />
               </div>
 
               <!-- Floating Experience Badge -->
-              <div class="hero-float-badge glow-on-hover" data-animate="fade-up" data-delay="400">
+              <div class="hero-float-badge"
+                style="position: absolute; bottom: 28%; left: -3%; background: rgba(255,255,255,0.95); padding: 1rem 1.4rem; border-radius: 1rem; box-shadow: 0 20px 50px rgba(0,0,0,0.18); z-index: 5; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); opacity: 1; transform: none;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <div
+                    style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <i class="ph ph-heart-half" style="color: white; font-size: 1.3rem;"></i>
                   </div>
                   <div>
                     <p style="margin: 0; font-size: 0.75rem; color: var(--color-gray-500);">Since 2018</p>
-                    <p style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--color-gray-900);">50K+ Patients</p>
+                    <p style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--color-gray-900);">50K+
+                      Patients</p>
                   </div>
                 </div>
               </div>
 
               <!-- Floating Rating Card -->
-              <div class="hero-float-rating glow-on-hover" data-animate="fade-up" data-delay="600">
+              <div class="hero-float-rating"
+                style="position: absolute; top: 28%; right: -3%; background: rgba(255,255,255,0.95); padding: 0.9rem 1.3rem; border-radius: 1rem; box-shadow: 0 20px 50px rgba(0,0,0,0.18); z-index: 5; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); opacity: 1; transform: none;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #F59E0B, #FBBF24); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <div
+                    style="width: 44px; height: 44px; background: linear-gradient(135deg, #F59E0B, #FBBF24); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <i class="ph-fill ph-star" style="color: white; font-size: 1.2rem;"></i>
                   </div>
                   <div>
                     <p style="margin: 0; font-size: 0.75rem; color: var(--color-gray-500);">Rating</p>
-                    <p style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--color-gray-900);">4.9/5 <span style="font-size: 0.7rem; color: var(--color-gray-400);">(2.8K)</span></p>
+                    <p style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--color-gray-900);">4.9/5 <span
+                        style="font-size: 0.7rem; color: var(--color-gray-400);">(2.8K)</span></p>
                   </div>
                 </div>
               </div>
 
               <!-- Pulse Ring Decoration -->
-              <div class="hero-pulse-ring"></div>
+              <div class="hero-pulse-ring"
+                style="position: absolute; top: 50%; left: 42%; width: 20px; height: 20px; background: var(--color-success); border-radius: 50%; z-index: 5; box-shadow: 0 0 0 4px rgba(16,185,129,0.2);">
+              </div>
             </div>
 
             <!-- ===== RIGHT: Text Content ===== -->
@@ -172,10 +194,12 @@
               <div class="hero-badge" data-animate="fade-up">
                 <i class="ph ph-sparkle"></i>
                 <span>AI-Powered Healthcare Platform</span>
-                <span style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;">NEW</span>
+                <span
+                  style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;">NEW</span>
               </div>
 
-              <h1 class="hero-title shimmer-text" data-animate="fade-up" data-delay="100"><em>Rejuvenate</em> Your Life with AI-Powered Wellness</h1>
+              <h1 class="hero-title shimmer-text" data-animate="fade-up" data-delay="100"><em>Rejuvenate</em> Your Life
+                with AI-Powered Wellness</h1>
               <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
                 Transform your health journey with our state-of-the-art medical facility. We combine cutting-edge AI
                 diagnostics with compassionate care to deliver personalized wellness plans tailored just for you.
@@ -183,17 +207,25 @@
 
               <ul class="hero-features" data-animate="fade-up" data-delay="300"
                 style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 2rem;">
-                <li style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
-                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> 24/7 AI Health Monitoring
+                <li
+                  style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
+                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> 24/7 AI Health
+                  Monitoring
                 </li>
-                <li style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
-                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Personalized Nutrition Plans
+                <li
+                  style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
+                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Personalized
+                  Nutrition Plans
                 </li>
-                <li style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
-                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Advanced Genetic Screening
+                <li
+                  style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
+                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Advanced Genetic
+                  Screening
                 </li>
-                <li style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
-                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Holistic Mental Wellness
+                <li
+                  style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); font-weight: 500;">
+                  <i class="ph-fill ph-check-circle" style="color: var(--color-success-light);"></i> Holistic Mental
+                  Wellness
                 </li>
               </ul>
 
@@ -230,15 +262,18 @@
               <!-- Trust Badges -->
               <div class="hero-trust-badges" data-animate="fade-up" data-delay="500"
                 style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(16, 185, 129, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(16, 185, 129, 0.3);">
+                <div
+                  style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(16, 185, 129, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(16, 185, 129, 0.3);">
                   <i class="ph ph-shield-check" style="color: #34D399; font-size: 1.1rem;"></i>
                   <span style="font-size: 0.8rem; font-weight: 600; color: #fff;">HIPAA Compliant</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(99, 102, 241, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(99, 102, 241, 0.3);">
+                <div
+                  style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(99, 102, 241, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(99, 102, 241, 0.3);">
                   <i class="ph ph-certificate" style="color: #818CF8; font-size: 1.1rem;"></i>
                   <span style="font-size: 0.8rem; font-weight: 600; color: #fff;">JCI Accredited</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(236, 72, 153, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(236, 72, 153, 0.3);">
+                <div
+                  style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: rgba(236, 72, 153, 0.15); border-radius: var(--radius-full); border: 1px solid rgba(236, 72, 153, 0.3);">
                   <i class="ph ph-star" style="color: #F472B6; font-size: 1.1rem;"></i>
                   <span style="font-size: 0.8rem; font-weight: 600; color: #fff;">Award Winning</span>
                 </div>
@@ -250,7 +285,8 @@
       </section>
 
       <!-- Scroll Indicator -->
-      <div class="scroll-indicator" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10;">
+      <div class="scroll-indicator"
+        style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10;">
         <span>Scroll Down</span>
         <i class="ph ph-caret-double-down"></i>
       </div>
@@ -532,7 +568,8 @@
               <span
                 style="display: inline-block; background: rgba(129, 140, 248, 0.2); color: #A5B4FC; padding: 0.5rem 1rem; border-radius: var(--radius-full); font-weight: 600; font-size: 0.9rem; margin-bottom: 1.5rem;"><i
                   class="ph ph-chart-bar"></i> Smart Analytics</span>
-              <h2 class="shimmer-text" style="color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2;">Your
+              <h2 class="shimmer-text"
+                style="color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2;">Your
                 Health Data,<br>Beautifully Visualized</h2>
               <p style="color: rgba(255,255,255,0.75); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">Our
                 intelligent dashboard transforms complex medical data into actionable insights. Track vitals, monitor
@@ -847,9 +884,11 @@
 
           <div class="container hero-grid">
             <div>
-              <span class="hero-chip" data-animate="fade-up"><i class="ph ph-sparkle"></i> Elite Performance Studio</span>
-              <h1 class="hero-title fitness-title shimmer-text" data-animate="fade-up" data-delay="100">Train Like a <span
-                  class="gradient">Pro</span><br>Recover Like a <span class="gradient">Champion</span></h1>
+              <span class="hero-chip" data-animate="fade-up"><i class="ph ph-sparkle"></i> Elite Performance
+                Studio</span>
+              <h1 class="hero-title fitness-title shimmer-text" data-animate="fade-up" data-delay="100">Train Like a
+                <span class="gradient">Pro</span><br>Recover Like a <span class="gradient">Champion</span>
+              </h1>
               <p data-animate="fade-up" data-delay="200"
                 style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 640px;">AI-guided programming,
                 biometric feedback, and recovery science in one immersive space designed to push, protect, and perfect
@@ -1082,7 +1121,8 @@
                   </div>
                 </div>
               </div>
-              <div data-animate="fade-up" data-delay="100" style="position: relative; border-radius: 1rem; overflow: hidden;">
+              <div data-animate="fade-up" data-delay="100"
+                style="position: relative; border-radius: 1rem; overflow: hidden;">
                 <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&auto=format&fit=crop&q=80"
                   alt="Cardio zone" style="width: 100%; height: 100%; object-fit: cover;">
                 <div
@@ -1093,7 +1133,8 @@
                   </div>
                 </div>
               </div>
-              <div data-animate="fade-up" data-delay="200" style="position: relative; border-radius: 1rem; overflow: hidden;">
+              <div data-animate="fade-up" data-delay="200"
+                style="position: relative; border-radius: 1rem; overflow: hidden;">
                 <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&auto=format&fit=crop&q=80"
                   alt="Recovery suite" style="width: 100%; height: 100%; object-fit: cover;">
                 <div
@@ -1104,7 +1145,8 @@
                   </div>
                 </div>
               </div>
-              <div data-animate="fade-up" data-delay="100" style="position: relative; border-radius: 1rem; overflow: hidden;">
+              <div data-animate="fade-up" data-delay="100"
+                style="position: relative; border-radius: 1rem; overflow: hidden;">
                 <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80"
                   alt="Yoga studio" style="width: 100%; height: 100%; object-fit: cover;">
                 <div
@@ -1115,7 +1157,8 @@
                   </div>
                 </div>
               </div>
-              <div data-animate="fade-up" data-delay="200" style="position: relative; border-radius: 1rem; overflow: hidden;">
+              <div data-animate="fade-up" data-delay="200"
+                style="position: relative; border-radius: 1rem; overflow: hidden;">
                 <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&auto=format&fit=crop&q=80"
                   alt="Boxing ring" style="width: 100%; height: 100%; object-fit: cover;">
                 <div
@@ -1606,9 +1649,11 @@
         <!-- Content from services.html -->
         <div class="container">
           <div class="section-header">
-            <span class="section-badge" data-animate="fade-up"><i class="ph ph-sparkle"></i> World-Class Healthcare</span>
+            <span class="section-badge" data-animate="fade-up"><i class="ph ph-sparkle"></i> World-Class
+              Healthcare</span>
             <h2 class="section-title" data-animate="fade-up" data-delay="100">Our Premium Services</h2>
-            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Comprehensive wellness solutions tailored to your
+            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Comprehensive wellness solutions
+              tailored to your
               unique needs. Every program is backed by science and personalized by AI.</p>
           </div>
 
@@ -1797,7 +1842,8 @@
           <div class="section-header">
             <span class="section-badge" data-animate="fade-up"><i class="ph ph-info"></i> Our Story</span>
             <h2 class="section-title" data-animate="fade-up" data-delay="100">About Vitality.AI</h2>
-            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Where compassion meets cutting-edge technology to
+            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Where compassion meets cutting-edge
+              technology to
               pioneer the future of healthcare.</p>
           </div>
 
@@ -1863,7 +1909,8 @@
               <p style="color: var(--color-gray-600);">To become the global leader in AI-powered preventive healthcare,
                 making precision medicine accessible to everyone, everywhere.</p>
             </div>
-            <div class="premium-card hover-lift" data-animate="fade-up" data-delay="100" style="padding: 2.5rem; text-align: center;">
+            <div class="premium-card hover-lift" data-animate="fade-up" data-delay="100"
+              style="padding: 2.5rem; text-align: center;">
               <div
                 style="width: 70px; height: 70px; background: rgba(236, 72, 153, 0.1); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                 <i class="ph ph-flag-banner" style="font-size: 2.5rem; color: var(--color-accent);"></i>
@@ -1872,7 +1919,8 @@
               <p style="color: var(--color-gray-600);">To empower individuals with data-driven health insights,
                 personalized care plans, and world-class medical expertise under one roof.</p>
             </div>
-            <div class="premium-card hover-lift" data-animate="fade-up" data-delay="200" style="padding: 2.5rem; text-align: center;">
+            <div class="premium-card hover-lift" data-animate="fade-up" data-delay="200"
+              style="padding: 2.5rem; text-align: center;">
               <div
                 style="width: 70px; height: 70px; background: rgba(16, 185, 129, 0.1); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
                 <i class="ph ph-hand-heart" style="font-size: 2.5rem; color: var(--color-success);"></i>
@@ -1886,7 +1934,8 @@
           <!-- Team Carousel (From About) -->
           <div class="section-header" style="margin-top: 5rem;">
             <h2 class="section-title" data-animate="fade-up">Meet Our Expert Team</h2>
-            <p class="section-subtitle" data-animate="fade-up" data-delay="100">Board-certified physicians and specialists dedicated
+            <p class="section-subtitle" data-animate="fade-up" data-delay="100">Board-certified physicians and
+              specialists dedicated
               to your wellness journey</p>
           </div>
           <div class="carousel-container">
@@ -1967,7 +2016,8 @@
           <div class="section-header">
             <span class="section-badge" data-animate="fade-up"><i class="ph ph-credit-card"></i> Memberships</span>
             <h2 class="section-title" data-animate="fade-up" data-delay="100">Flexible Plans for Every Journey</h2>
-            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Invest in your health with transparent pricing. No
+            <p class="section-subtitle" data-animate="fade-up" data-delay="200">Invest in your health with transparent
+              pricing. No
               hidden fees, cancel anytime.</p>
           </div>
 
@@ -1999,17 +2049,19 @@
                   Progress Report</li>
                 <li
                   style="padding: 0.6rem 0; display: flex; align-items: center; gap: 0.75rem; color: var(--color-gray-400);">
-                  <i class="ph ph-x-circle" style="font-size: 1.1rem;"></i> Cryotherapy Sessions</li>
+                  <i class="ph ph-x-circle" style="font-size: 1.1rem;"></i> Cryotherapy Sessions
+                </li>
                 <li
                   style="padding: 0.6rem 0; display: flex; align-items: center; gap: 0.75rem; color: var(--color-gray-400);">
-                  <i class="ph ph-x-circle" style="font-size: 1.1rem;"></i> AI Diagnostics</li>
+                  <i class="ph ph-x-circle" style="font-size: 1.1rem;"></i> AI Diagnostics
+                </li>
               </ul>
               <a href="book-appointment.html" class="btn btn-outline w-full hover-scale" style="margin-top: 2rem;">Get
                 Started</a>
             </div>
 
-            <div class="pricing-card premium-card featured hover-lift tilt-card glow-on-hover" data-animate="fade-up" data-delay="200"
-              style="padding: 3rem; transform: scale(1.05); border: 2px solid var(--color-accent);">
+            <div class="pricing-card premium-card featured hover-lift tilt-card glow-on-hover" data-animate="fade-up"
+              data-delay="200" style="padding: 3rem; transform: scale(1.05); border: 2px solid var(--color-accent);">
               <div
                 style="position: absolute; top: 0; right: 1.5rem; background: linear-gradient(135deg, var(--color-accent), var(--color-primary)); color: white; padding: 0.4rem 1.25rem; border-radius: 0 0 0.75rem 0.75rem; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
                 Most Popular</div>
@@ -2049,7 +2101,8 @@
                 Started</a>
             </div>
 
-            <div class="pricing-card premium-card hover-lift tilt-card" data-animate="fade-up" data-delay="400" style="padding: 3rem;">
+            <div class="pricing-card premium-card hover-lift tilt-card" data-animate="fade-up" data-delay="400"
+              style="padding: 3rem;">
               <div style="text-align: center; margin-bottom: 1.5rem;">
                 <div
                   style="width: 60px; height: 60px; background: rgba(139, 95, 246, 0.15); border-radius: 1rem; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
@@ -2182,7 +2235,8 @@
           <div class="section-header">
             <span class="section-badge" data-animate="fade-up"><i class="ph ph-chat-teardrop-dots"></i> Reach Out</span>
             <h2 class="section-title" data-animate="fade-up">Get in Touch</h2>
-            <p class="section-subtitle" data-animate="fade-up" data-delay="100">Have a question or ready to start your journey? We're
+            <p class="section-subtitle" data-animate="fade-up" data-delay="100">Have a question or ready to start your
+              journey? We're
               here to help every step of the way.</p>
           </div>
 
@@ -2640,7 +2694,7 @@
           dot.className = 'sparkle-dot';
           dot.style.left = e.clientX + 'px';
           dot.style.top = e.clientY + 'px';
-          dot.style.background = ['#6366F1','#EC4899','#10B981','#F59E0B','#8B5CF6'][Math.floor(Math.random()*5)];
+          dot.style.background = ['#6366F1', '#EC4899', '#10B981', '#F59E0B', '#8B5CF6'][Math.floor(Math.random() * 5)];
           document.body.appendChild(dot);
           setTimeout(() => dot.remove(), 800);
         });

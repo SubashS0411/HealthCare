@@ -1,0 +1,168 @@
+/* =========================================
+   EMERGENCY HERO OVERRIDE
+   Forces the Home 1 Hero into a robust 2-column layout
+   ========================================= */
+
+/* SAFETY: Ensure hero images are ALWAYS visible even if animation JS is slow */
+.hero-image-composition[data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Also ensure hero-content children are visible */
+.hero-content [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+/* 1. Force Grid Layout */
+.hero-grid--home1 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4rem !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* 2. Mobile Stack (Text Top is standard, but keeping DOM order for now) */
+@media (max-width: 991px) {
+    .hero-grid--home1 {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 3rem !important;
+    }
+
+    .hero-grid--home1 .hero-content {
+        order: 1 !important;
+    }
+
+    .hero-grid--home1 .hero-image-composition {
+        order: 2 !important;
+        margin-top: 2rem !important;
+        min-height: 500px !important;
+    }
+
+    .hero-features,
+    .hero-stats,
+    .hero-trust-badges,
+    .hero-cta {
+        justify-content: center !important;
+    }
+}
+
+/* 3. Image Container - FORCE SIZE */
+.hero-image-composition {
+    position: relative !important;
+    /* width: 100% !important; */
+    width: 100% !important;
+    height: auto !important;
+    min-height: 650px !important;
+    /* Critical for vertical space */
+    display: block !important;
+    /* Changed to block to allow absolute children to position correctly relative to it */
+}
+
+/* 4. Images - FORCE DIMENSIONS */
+.hero-img-main {
+    position: absolute !important;
+    top: 5% !important;
+    left: 2% !important;
+    width: 75% !important;
+    max-width: 550px !important;
+    height: auto !important;
+    aspect-ratio: 4/5 !important;
+    border-radius: 2rem !important;
+    z-index: 2 !important;
+    display: block !important;
+}
+
+.hero-img-main img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.hero-img-secondary {
+    position: absolute !important;
+    bottom: 10% !important;
+    right: 5% !important;
+    width: 55% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    aspect-ratio: 4/3 !important;
+    border-radius: 1.5rem !important;
+    z-index: 3 !important;
+    display: block !important;
+}
+
+.hero-img-secondary img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.hero-img-circle {
+    position: absolute !important;
+    top: 10% !important;
+    right: 2% !important;
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 50% !important;
+    z-index: 4 !important;
+    display: block !important;
+}
+
+.hero-img-circle img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 5. Floating Elements */
+.hero-float-badge {
+    position: absolute !important;
+    bottom: 25% !important;
+    left: -2% !important;
+    z-index: 5 !important;
+    background: white !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 1rem !important;
+    display: flex !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-float-rating {
+    position: absolute !important;
+    top: 30% !important;
+    right: -2% !important;
+    z-index: 5 !important;
+    background: white !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 1rem !important;
+    display: flex !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 6. Pulse Ring */
+.hero-pulse-ring {
+    position: absolute !important;
+    top: 50% !important;
+    left: 45% !important;
+}
+
+/* 7. Text Content Alignment */
+.hero-content {
+    text-align: left;
+    padding-left: 2rem;
+}
+
+@media (max-width: 991px) {
+    .hero-content {
+        padding-left: 0 !important;
+        text-align: center !important;
+    }
+}

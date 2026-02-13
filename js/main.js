@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileMenu();
   initScrollAnimations();
+  initDataAnimations(); // NEW: Handle [data-animate] elements
   initFormValidation();
   initDropdowns();
   initScrollTop();
@@ -14,11 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();
 });
 
+// Handle [data-animate] reveal animations via IntersectionObserver
+function initDataAnimations() {
+  const animatedEls = document.querySelectorAll('[data-animate]');
+  if (!animatedEls.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Apply any data-delay before revealing
+        const delay = entry.target.getAttribute('data-delay');
+        if (delay) {
+          entry.target.style.transitionDelay = delay + 'ms';
+        }
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  animatedEls.forEach(el => observer.observe(el));
+}
+
 // Toggle Dropdown Menu
 function toggleDropdown(button) {
   const dropdown = button.parentElement;
   dropdown.classList.toggle('active');
-  
+
   // Close other dropdowns
   document.querySelectorAll('.nav-dropdown').forEach(item => {
     if (item !== dropdown && item.classList.contains('active')) {
@@ -48,7 +74,7 @@ function initDirectionToggle() {
 function toggleDirection() {
   const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
   const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-  
+
   document.documentElement.setAttribute('dir', newDir);
   localStorage.setItem('vitality-direction', newDir);
   updateDirToggleUI(newDir);
@@ -72,14 +98,14 @@ function updateDirToggleUI(dir) {
 function toggleDashboardSidebar() {
   const sidebar = document.querySelector('.dashboard-sidebar');
   const overlay = document.querySelector('.sidebar-overlay');
-  
+
   if (sidebar) {
     sidebar.classList.toggle('active');
   }
   if (overlay) {
     overlay.classList.toggle('active');
   }
-  
+
   // Prevent body scroll when sidebar is open
   if (sidebar && sidebar.classList.contains('active')) {
     document.body.style.overflow = 'hidden';
@@ -122,14 +148,14 @@ function initVideoModal() {
       </div>
     `;
     document.body.appendChild(modal);
-    
+
     // Close modal on background click
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeVideoModal();
       }
     });
-    
+
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -168,7 +194,7 @@ function closeVideoModal() {
 function initNavbar() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
-  
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -182,14 +208,14 @@ function initNavbar() {
 function initMobileMenu() {
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
   const navMenu = document.querySelector('.nav-menu');
-  
+
   if (!mobileToggle || !navMenu) return;
-  
+
   mobileToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     mobileToggle.classList.toggle('active');
   });
-  
+
   // Close menu when clicking a link
   navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -197,7 +223,7 @@ function initMobileMenu() {
       mobileToggle.classList.remove('active');
     });
   });
-  
+
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
@@ -213,7 +239,7 @@ function initScrollAnimations() {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
   };
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -222,7 +248,7 @@ function initScrollAnimations() {
       }
     });
   }, observerOptions);
-  
+
   const animatedElements = document.querySelectorAll('.animate-on-scroll');
   animatedElements.forEach(el => observer.observe(el));
 }
@@ -230,14 +256,14 @@ function initScrollAnimations() {
 // Form Validation
 function initFormValidation() {
   const forms = document.querySelectorAll('form[data-validate]');
-  
+
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
       let isValid = true;
-      
+
       inputs.forEach(input => {
         if (!input.value.trim()) {
           isValid = false;
@@ -247,7 +273,7 @@ function initFormValidation() {
           input.classList.remove('error');
           removeError(input);
         }
-        
+
         // Email validation
         if (input.type === 'email' && input.value) {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -257,7 +283,7 @@ function initFormValidation() {
             showError(input, 'Please enter a valid email');
           }
         }
-        
+
         // Phone validation
         if (input.type === 'tel' && input.value) {
           const phoneRegex = /^[\d\s\-\+\(\)]+$/;
@@ -268,12 +294,12 @@ function initFormValidation() {
           }
         }
       });
-      
+
       if (isValid) {
         handleFormSubmit(form);
       }
     });
-    
+
     // Remove error on input
     const inputs = form.querySelectorAll('input, textarea, select');
     inputs.forEach(input => {
@@ -308,7 +334,7 @@ function handleFormSubmit(form) {
   const originalText = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.innerHTML = '<span class="loader"></span>';
-  
+
   // Simulate API call
   setTimeout(() => {
     submitBtn.disabled = false;
@@ -322,7 +348,7 @@ function handleFormSubmit(form) {
 function initScrollTop() {
   const scrollTopBtn = document.querySelector('.scroll-top');
   if (!scrollTopBtn) return;
-  
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
       scrollTopBtn.classList.add('visible');
@@ -330,7 +356,7 @@ function initScrollTop() {
       scrollTopBtn.classList.remove('visible');
     }
   });
-  
+
   scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -426,7 +452,7 @@ function initScrollSpy() {
 function showNotification(message, type = 'success') {
   const existing = document.querySelector('.notification-toast');
   if (existing) existing.remove();
-  
+
   const notification = document.createElement('div');
   notification.className = `notification-toast ${type}`;
   notification.style.position = 'fixed';
@@ -442,21 +468,21 @@ function showNotification(message, type = 'success') {
   notification.style.alignItems = 'center';
   notification.style.gap = '12px';
   notification.style.animation = 'fadeInUp 0.3s ease';
-  
+
   const colors = {
     success: 'var(--color-success)',
     error: 'var(--color-accent)',
     info: 'var(--color-primary)'
   };
-  
+
   notification.style.borderLeft = `4px solid ${colors[type] || colors.info}`;
   notification.innerHTML = `
     <i class="ph ${type === 'success' ? 'ph-check-circle' : 'ph-warning-circle'}" style="font-size: 1.5rem; color: ${colors[type]}"></i>
     <span>${message}</span>
   `;
-  
+
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
     notification.style.animation = 'fadeOut 0.3s ease';
     setTimeout(() => notification.remove(), 300);
@@ -468,7 +494,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
     if (href === '#') return;
-    
+
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
@@ -495,7 +521,7 @@ function debounce(func, wait) {
 
 function throttle(func, limit) {
   let inThrottle;
-  return function(...args) {
+  return function (...args) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
@@ -517,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize FAQ accordions
   const faqCards = document.querySelectorAll('.premium-card[onclick*="expanded"]');
   faqCards.forEach(card => {
-    card.addEventListener('click', function() {
+    card.addEventListener('click', function () {
       this.classList.toggle('expanded');
     });
   });
@@ -526,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Staggered Animation on Scroll
 function initStaggerAnimations() {
   const staggerContainers = document.querySelectorAll('.stagger-container');
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -539,7 +565,7 @@ function initStaggerAnimations() {
       }
     });
   }, { threshold: 0.2 });
-  
+
   staggerContainers.forEach(container => observer.observe(container));
 }
 
@@ -551,7 +577,7 @@ document.addEventListener('mousemove', (e) => {
   const particles = document.querySelectorAll('.particle');
   const mouseX = e.clientX / window.innerWidth;
   const mouseY = e.clientY / window.innerHeight;
-  
+
   particles.forEach((particle, index) => {
     const speed = (index % 3 + 1) * 10;
     const x = (mouseX - 0.5) * speed;
