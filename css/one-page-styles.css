@@ -759,6 +759,252 @@
     font-size: 1.5rem;
 }
 
+/* =========================================
+   HOME 1 HERO — Image Composition Layout
+   ========================================= */
+
+/* Override grid for Home 1 hero specifically */
+.hero-grid--home1 {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr !important;
+    gap: 2rem !important;
+    align-items: center;
+    width: 100%;
+}
+
+/* Image Composition Container */
+.hero-image-composition {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Decorative blob */
+.hero-blob {
+    position: absolute;
+    width: 70%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.4), rgba(236, 72, 153, 0.25), transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(70px);
+    z-index: 0;
+    animation: gentleFloat 8s ease-in-out infinite;
+}
+
+/* Decorative dots pattern */
+.hero-dots-pattern {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    top: 2rem;
+    left: 5%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+    z-index: 0;
+}
+
+/* Main Doctor Image */
+.hero-img-main {
+    position: absolute;
+    top: 2%;
+    left: 10%;
+    width: 55%;
+    max-width: 400px;
+    height: 72%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    z-index: 2;
+}
+
+.hero-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-img-main::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(30, 27, 75, 0.4) 100%);
+    pointer-events: none;
+}
+
+/* Secondary Overlapping Image */
+.hero-img-secondary {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    width: 48%;
+    max-width: 300px;
+    height: 35%;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.12);
+    z-index: 3;
+}
+
+.hero-img-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Small Circle Image */
+.hero-img-circle {
+    position: absolute;
+    top: 0;
+    right: 12%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(255, 255, 255, 0.2);
+    z-index: 4;
+}
+
+.hero-img-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Floating Experience Badge */
+.hero-float-badge {
+    position: absolute;
+    bottom: 18%;
+    left: 2%;
+    background: white;
+    padding: 0.9rem 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+    backdrop-filter: blur(8px);
+}
+
+/* Floating Rating Card */
+.hero-float-rating {
+    position: absolute;
+    top: 22%;
+    right: 0;
+    background: white;
+    padding: 0.9rem 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+    backdrop-filter: blur(8px);
+}
+
+/* Pulse Ring */
+.hero-pulse-ring {
+    position: absolute;
+    bottom: 42%;
+    right: 30%;
+    width: 18px;
+    height: 18px;
+    background: var(--color-success);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.hero-pulse-ring::before,
+.hero-pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 2px solid var(--color-success);
+    border-radius: 50%;
+    animation: glowPulse 2s ease-out infinite;
+}
+
+.hero-pulse-ring::after {
+    inset: -14px;
+    animation-delay: 0.5s;
+    opacity: 0.5;
+}
+
+/* Responsive for hero image composition */
+@media (max-width: 1100px) {
+    .hero-grid--home1 {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .hero-image-composition {
+        max-width: 520px;
+        min-height: 480px;
+        margin: 0 auto 2rem;
+    }
+
+    .hero-img-main {
+        width: 60%;
+        height: 70%;
+        left: 5%;
+    }
+
+    .hero-img-secondary {
+        width: 50%;
+        height: 32%;
+    }
+
+    .hero-content {
+        order: 2;
+    }
+
+    .hero-image-composition {
+        order: 1;
+    }
+
+    .hero-float-badge {
+        left: 0;
+        bottom: 15%;
+    }
+
+    .hero-float-rating {
+        right: 0;
+        top: 18%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-image-composition {
+        max-width: 100%;
+        min-height: 400px;
+    }
+
+    .hero-img-main {
+        left: 3%;
+        width: 60%;
+        height: 65%;
+    }
+
+    .hero-img-secondary {
+        width: 50%;
+        height: 30%;
+    }
+
+    .hero-img-circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    .hero-float-badge,
+    .hero-float-rating {
+        display: none;
+    }
+}
+
 /* Fix for Wellness Hero Background Visibility */
 #home.hero {
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
@@ -848,6 +1094,111 @@
 .feature-img img {
     transition: transform 0.5s ease;
 }
+
+/* ===================== HOW IT WORKS - STEPS ===================== */
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .steps-grid > div:first-child {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .steps-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ===================== FAQ STYLES ===================== */
+.faq-item.active .faq-toggle .ph-plus,
+.fitness-faq-item.active .faq-toggle .ph-plus {
+    transform: rotate(45deg);
+}
+
+.faq-answer.open {
+    max-height: 300px !important;
+    padding-top: 0.25rem;
+}
+
+/* ===================== HOME 2 - FACILITY GRID RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .fitness-section [style*="grid-template-columns: repeat(3"] {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+    }
+    .fitness-section [style*="grid-template-columns: repeat(3"] > div:first-child {
+        grid-row: span 1 !important;
+    }
+    .fitness-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .fitness-section [style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+    .fitness-section [style*="display: flex"][style*="width: 45%"] {
+        flex-direction: column !important;
+    }
+    .fitness-section [style*="width: 45%"] {
+        width: 100% !important;
+        height: 250px !important;
+    }
+    .fitness-section [style*="width: 55%"] {
+        width: 100% !important;
+    }
+}
+
+/* ===================== WELLNESS SECTIONS RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .why-choose-us .grid-2,
+    .health-analytics .grid-2,
+    .wellness-faq .grid-2 {
+        grid-template-columns: 1fr !important;
+    }
+    .cta-banner h2 {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* ===================== SMOOTH HOME SWITCHING ===================== */
+.home-section-wellness,
+.home-section-fitness {
+    transition: opacity 0.5s ease;
+}
+
+.home-section-wellness.hidden,
+.home-section-fitness.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* ===================== NAV DROPDOWN ENHANCEMENTS ===================== */
+.nav-dropdown-menu {
+    min-width: 200px;
+}
+
+.nav-dropdown-item {
+    transition: background 0.2s, padding-left 0.2s;
+}
+
+.nav-dropdown-item:hover {
+    padding-left: 1.25rem;
+}
+
+/* ===================== TRANSFORMATION CARD HOVER ===================== */
+.premium-card:hover .service-image img,
+.premium-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ===================== PROGRESS BAR ANIMATION ===================== */
+@keyframes growWidth {
+    from { width: 0; }
+}
+
+.fitness-section [style*="border-radius: 999px"] > div {
+    animation: growWidth 1.5s ease-out;
+}
 .service-image:hover img,
 .feature-img:hover img {
     transform: scale(1.05);
@@ -859,6 +1210,332 @@
 }
 .testimonial-card:hover {
     box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   PREMIUM SCROLL ANIMATION SYSTEM
+   ========================================================= */
+
+/* Base state — hidden until IntersectionObserver triggers */
+[data-animate] {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.85s cubic-bezier(.22,1,.36,1),
+                transform 0.85s cubic-bezier(.22,1,.36,1);
+}
+
+/* Directional starting positions */
+[data-animate="fade-up"]     { transform: translateY(60px); }
+[data-animate="fade-down"]   { transform: translateY(-60px); }
+[data-animate="fade-left"]   { transform: translateX(60px); }
+[data-animate="fade-right"]  { transform: translateX(-60px); }
+[data-animate="fade-in"]     { transform: scale(0.96); }
+[data-animate="zoom-in"]     { transform: scale(0.85); }
+[data-animate="zoom-out"]    { transform: scale(1.1); }
+[data-animate="flip-up"]     { transform: perspective(800px) rotateX(15deg) translateY(40px); }
+[data-animate="slide-up"]    { transform: translateY(100px); }
+[data-animate="blur-in"]     { transform: scale(0.95); filter: blur(12px); }
+[data-animate="rotate-in"]   { transform: rotate(-8deg) scale(0.9); }
+
+/* Revealed state */
+[data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    filter: blur(0);
+}
+
+/* Stagger delays via data-delay attribute */
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.3s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+[data-delay="500"] { transition-delay: 0.5s; }
+[data-delay="600"] { transition-delay: 0.6s; }
+[data-delay="700"] { transition-delay: 0.7s; }
+[data-delay="800"] { transition-delay: 0.8s; }
+
+/* =========================================================
+   PREMIUM KEYFRAMES — DECORATIVE
+   ========================================================= */
+
+@keyframes morphBlob {
+    0%, 100% { border-radius: 42% 56% 72% 28% / 42% 42% 56% 56%; }
+    33%      { border-radius: 72% 28% 42% 56% / 56% 56% 42% 42%; }
+    66%      { border-radius: 28% 72% 56% 42% / 42% 56% 72% 28%; }
+}
+
+@keyframes shimmerGradient {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-12px) rotate(1deg); }
+    50%      { transform: translateY(-6px) rotate(-0.5deg); }
+    75%      { transform: translateY(-16px) rotate(0.5deg); }
+}
+
+@keyframes dashOffset {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to   { width: 100%; }
+}
+
+@keyframes ripple {
+    0%   { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.15); }
+    50%      { box-shadow: 0 0 40px rgba(99,102,241,0.35), 0 0 80px rgba(99,102,241,0.1); }
+}
+
+@keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes borderDraw {
+    0%   { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+    25%  { clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%); }
+    50%  { clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50%      { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* =========================================================
+   PREMIUM UTILITY ANIMATIONS
+   ========================================================= */
+
+/* Floating cards with depth */
+.float-premium {
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+.float-premium-delayed {
+    animation: gentleFloat 7s ease-in-out infinite 1.5s;
+}
+
+/* Morphing blobs */
+.morph-blob {
+    animation: morphBlob 12s ease-in-out infinite;
+}
+
+/* Glow pulse on cards */
+.glow-on-hover {
+    transition: box-shadow 0.5s ease;
+}
+.glow-on-hover:hover {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Shimmer text effect */
+.shimmer-text {
+    background: linear-gradient(90deg, 
+        var(--color-primary) 0%, 
+        var(--color-accent) 25%, 
+        var(--color-primary) 50%, 
+        var(--color-accent) 75%, 
+        var(--color-primary) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerGradient 4s linear infinite;
+}
+
+/* Ripple button effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Image reveal on scroll */
+.reveal-image {
+    position: relative;
+    overflow: hidden;
+}
+.reveal-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(.77,0,.175,1);
+    transform: scaleX(1);
+    z-index: 2;
+}
+.reveal-image.is-visible::after {
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+/* Magnetic hover effect */
+.magnetic-hover {
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* Tilt card perspective */
+.tilt-card {
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Card border animation on hover */
+.border-animate {
+    position: relative;
+    overflow: hidden;
+}
+.border-animate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-success), var(--color-primary));
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradientShift 3s ease infinite;
+}
+.border-animate:hover::before {
+    opacity: 1;
+}
+
+/* Staggered grid children reveal */
+.stagger-reveal > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.stagger-reveal.is-visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: none; }
+.stagger-reveal.is-visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: none; }
+.stagger-reveal.is-visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: none; }
+.stagger-reveal.is-visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: none; }
+.stagger-reveal.is-visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: none; }
+.stagger-reveal.is-visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: none; }
+
+/* Counter animation text */
+.counter-value {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.counter-value.counting {
+    animation: countUp 0.5s ease forwards;
+}
+
+/* Parallax depth layers */
+.parallax-layer {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* Smooth section transitions */
+section {
+    overflow: hidden;
+}
+
+/* Navbar animation on scroll */
+.navbar {
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+}
+.navbar.scrolled {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Cursor sparkle trail (decorative) */
+.sparkle-dot {
+    position: fixed;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    background: var(--color-primary);
+    animation: sparkle 0.8s ease forwards;
+}
+
+/* Smooth scroll indicator pulse */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+.scroll-indicator i {
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Text split letter animation */
+.split-text .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotate(5deg);
+    transition: all 0.5s cubic-bezier(.22,1,.36,1);
+}
+.split-text.is-visible .char {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* Prefers reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+    [data-animate],
+    .float-premium,
+    .float-premium-delayed,
+    .morph-blob,
+    .shimmer-text,
+    .sparkle-dot,
+    .scroll-indicator,
+    .parallax-layer {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
 }
 
 /* Newsletter input focus */
