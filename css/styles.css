@@ -3824,3 +3824,217 @@ section[id] {
   background: white;
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
+
+/* ========================================
+   PREMIUM SECTIONS STYLES (Re-applied)
+   ======================================== */
+
+.section-premium {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.light-section {
+  background-color: #ffffff !important;
+  color: var(--color-gray-800) !important;
+}
+
+.light-section h2,
+.light-section h3,
+.light-section h4 {
+  color: var(--color-gray-900) !important;
+}
+
+.light-section p {
+  color: var(--color-gray-600) !important;
+}
+
+.bg-gradient-mesh {
+  background: radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+  background-color: #0f172a;
+  color: white !important;
+}
+
+.glass-card-premium {
+  background: rgba(255, 255, 255, 0.7);
+  /* Lighter for light mode by default */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.bg-gradient-mesh .glass-card-premium {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.glass-card-premium:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.bg-gradient-mesh .glass-card-premium:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.feature-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(99, 102, 241, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bg-gradient-mesh .feature-icon-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Telemedicine Section */
+.telemed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .telemed-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mental Health Section */
+.mind-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  height: 400px;
+  transition: transform 0.4s ease;
+}
+
+.mind-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.mind-card:hover img {
+  transform: scale(1.1);
+}
+
+.mind-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+}
+
+/* Premium Button Overrides */
+.btn-accent-strong {
+  background: linear-gradient(135deg, #F472B6, #A855F7);
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
+/* Scroll Animations */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   FIXES FOR IMAGES AND GLITCHES
+   ======================================== */
+
+/* Fix Home 1 Image Alignment */
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+/* Fix Pricing Card Blob/Badge Glitch */
+.fitness-section .pricing-card.featured {
+  overflow: visible !important;
+  /* Allow badge to show */
+  border: 2px solid var(--color-accent) !important;
+}
+
+.fitness-section .pricing-card.featured::before {
+  content: 'BEST VALUE';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #F472B6, #A855F7);
+  padding: 0.25rem 1rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+}
+
+/* Ensure pill badge in HTML starts hidden if we use pseudo element, 
+   OR we hide pseudo if we use HTML badge. 
+   Let's hide the HTML pill-badge to rely on the CSS one for consistency, 
+   or vice versa. user's screenshot showed a yellow blob. 
+   I will FORCE the yellow blob to specific dimensions if it was from One Page styles.
+*/
+
+/* Overwrite potential broken styles from One Page Styles */
+.pricing-card.featured .pill-badge {
+  display: none !important;
+  /* Remove duplicate if present */
+}

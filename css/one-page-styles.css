@@ -13,10 +13,21 @@
         #0B1224;
 }
 
+/* Force dark mode for fitness section container */
 .fitness-section {
     font-family: 'Manrope', sans-serif;
-    background: #050910;
-    color: var(--color-gray-50);
+    background: #050910 !important;
+    color: #f9fafb !important;
+}
+
+.fitness-section h2,
+.fitness-section h3,
+.fitness-section h4 {
+    color: #ffffff !important;
+}
+
+.fitness-section p {
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .fitness-title {
@@ -685,18 +696,7 @@
 }
 
 .pricing-card.featured::before {
-    content: 'MOST POPULAR';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--radius-full);
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    display: none !important;
 }
 
 .pricing-table {
